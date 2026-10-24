@@ -477,19 +477,56 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      gap: 8px;
-      background: #1E2925;
+      gap: 10px;
+      background: var(--bg-subtle);
       padding: 12px;
       border-radius: var(--radius-lg);
       position: relative;
+      border: 1px solid var(--border);
     }
     .sheet-panel {
       background: var(--bg-card);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      font-size: 0.75rem;
-      min-height: 260px;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      min-height: 290px;
       overflow-y: auto;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .sheet-panel .panel-hdr {
+      background: var(--teal-soft);
+      color: var(--teal-primary);
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 3px solid var(--teal-primary);
+    }
+    .sheet-panel .panel-sec {
+      color: var(--teal-primary);
+      font-weight: 800;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+    }
+    .sheet-panel .code-tag {
+      background: var(--bg-subtle);
+      color: var(--teal-primary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
       border: 1px solid var(--border);
     }
     .fold-line-vert {
@@ -533,14 +570,28 @@
       z-index: 100;
     }
 
-    /* Print Stylesheet for Physical Folding */
+    @page {
+      size: A4 landscape;
+      margin: 3.5mm;
+    }
+
+    /* Print Stylesheet for Physical 8-Page French Fold — 1-Page Guarantee */
     @media print {
-      body {
-        background: #FFF !important;
-        color: #000 !important;
+      html, body {
+        width: 290mm !important;
+        height: 203mm !important;
+        max-width: 290mm !important;
+        max-height: 203mm !important;
+        margin: 0 !important;
         padding: 0 !important;
+        background: #FFFFFF !important;
+        color: #0F1715 !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        overflow: hidden !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
-      .top-toolbar, .view-tabs, .french-fold-banner, .page-nav-bar, .cram-dock, .btn {
+      .top-toolbar, .view-tabs, .french-fold-banner, .page-nav-bar, .cram-dock, .btn, #sheetView > div:first-child {
         display: none !important;
       }
       #bookletView {
@@ -548,6 +599,10 @@
       }
       #sheetView {
         display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .sheet-grid {
         display: grid !important;
@@ -555,28 +610,87 @@
         grid-template-rows: repeat(2, 1fr) !important;
         gap: 2mm !important;
         padding: 0 !important;
+        margin: 0 !important;
         background: transparent !important;
-        width: 100% !important;
-        height: 100vh !important;
+        width: 290mm !important;
+        height: 203mm !important;
+        max-height: 203mm !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
       }
       .sheet-panel {
-        border: 1px solid #CCC !important;
-        padding: 2mm !important;
-        font-size: 6.5pt !important;
-        line-height: 1.25 !important;
-        min-height: auto !important;
-        break-inside: avoid;
+        border: 1.2px solid #0F766E !important;
+        border-radius: 3px !important;
+        padding: 1.6mm 2mm !important;
+        font-size: 5.7pt !important;
+        line-height: 1.15 !important;
+        background: #FFFFFF !important;
+        color: #0F1715 !important;
+        box-sizing: border-box !important;
+        height: 99.5mm !important;
+        max-height: 99.5mm !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
-      .page-title {
-        font-size: 8.5pt !important;
+      .sheet-panel .panel-hdr {
+        background: #E6F4F1 !important;
+        color: #0F766E !important;
+        font-weight: 800 !important;
+        font-size: 6.4pt !important;
+        padding: 0.8mm 1.2mm !important;
+        border-radius: 2px !important;
+        margin-bottom: 0.8mm !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-left: 2.5px solid #0F766E !important;
       }
-      .block-title {
-        font-size: 6.5pt !important;
+      .sheet-panel .panel-sec {
+        color: #0F766E !important;
+        font-weight: 800 !important;
+        font-size: 5.8pt !important;
+        text-transform: uppercase !important;
+        margin-top: 0.6mm !important;
+        margin-bottom: 0.3mm !important;
+        border-bottom: 0.5px solid #CBD5E1 !important;
+        padding-bottom: 0.2mm !important;
       }
-      .code-chip {
-        background: #EEE !important;
-        color: #000 !important;
-        font-size: 6pt !important;
+      .sheet-panel .code-tag {
+        background: #F1F5F9 !important;
+        color: #0F766E !important;
+        font-family: 'JetBrains Mono', monospace !important;
+        font-size: 5.2pt !important;
+        font-weight: 700 !important;
+        padding: 0.2mm 0.6mm !important;
+        border-radius: 2px !important;
+        border: 0.5px solid #CBD5E1 !important;
+      }
+      .fold-line-vert {
+        display: block !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 0 !important;
+        border-left: 1.5px dashed #0D9488 !important;
+        z-index: 20 !important;
+        pointer-events: none !important;
+      }
+      .fold-line-horiz {
+        display: block !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 0 !important;
+        border-top: 1.5px dashed #0D9488 !important;
+        z-index: 20 !important;
+        pointer-events: none !important;
       }
     }
 
@@ -632,7 +746,7 @@
         <div>
           <strong style="font-size:0.88rem; display:block;">8-Page French Style Structure</strong>
           <span style="font-size:0.75rem; color:var(--text-muted);">
-            Printed on 1 sheet $\rightarrow$ Fold in half horizontally $\rightarrow$ Fold in half vertically $\rightarrow$ Creates an 8-page booklet.
+            Printed on 1 sheet → Fold in half horizontally → Fold in half vertically → Creates an 8-page booklet.
           </span>
         </div>
       </div>
@@ -679,7 +793,7 @@
             <span>PASS: 30 / 60 MARKS</span>
           </div>
           <div class="key-def">
-            You need <strong>30/60 (50%)</strong> in today's paper to clear the UP EBIT <strong>40% Theory Subminimum</strong>. Practical is already secured at 54.4%. Scoring $\ge 30$ today completely secures your November exam admission.
+            You need <strong>30/60 (50%)</strong> in today's paper to clear the UP EBIT <strong>40% Theory Subminimum</strong>. Practical is already secured at 54.4%. Scoring ≥ 30 today completely secures your November exam admission.
           </div>
         </div>
 
@@ -688,7 +802,7 @@
           <div class="key-def">
             <strong>1. T-R-P-F (Validation):</strong> <span class="buzzword">Type</span>, <span class="buzzword">Range</span>, <span class="buzzword">Presence</span>, <span class="buzzword">Format</span>.<br>
             <strong>2. D-S-A (Metadata):</strong> <span class="buzzword">Descriptive</span> (discovery), <span class="buzzword">Structural</span> (assembly), <span class="buzzword">Administrative</span> (tech/rights).<br>
-            <strong>3. C-I-R (Search Engines):</strong> <span class="buzzword">Crawling</span> (spiders) $\rightarrow$ <span class="buzzword">Indexing</span> (Inverted Index) $\rightarrow$ <span class="buzzword">Ranking</span> (SERP).<br>
+            <strong>3. C-I-R (Search Engines):</strong> <span class="buzzword">Crawling</span> (spiders) → <span class="buzzword">Indexing</span> (Inverted Index) → <span class="buzzword">Ranking</span> (SERP).<br>
             <strong>4. A-C-I-D (RDBMS):</strong> <span class="buzzword">Atomicity</span>, <span class="buzzword">Consistency</span>, <span class="buzzword">Isolation</span>, <span class="buzzword">Durability</span>.
           </div>
         </div>
@@ -863,7 +977,7 @@
         <div class="content-block amber">
           <div class="block-title">ADDITIONAL INTEGRITY CHECKS</div>
           <div class="key-def" style="font-size:0.8rem;">
-            • <strong>Length Check:</strong> Characters within limits (e.g. password $\ge 8$ chars).<br>
+            • <strong>Length Check:</strong> Characters within limits (e.g. password ≥ 8 chars).<br>
             • <strong>Check Digit:</strong> Mathematical calculation on final digit (e.g. ISBN, credit cards).<br>
             • <strong>Lookup Check:</strong> Value exists in reference table (e.g. valid SA province codes).
           </div>
@@ -893,11 +1007,11 @@
           <div class="block-title">THE INVERTED INDEX (CORE EXAM CONCEPT)</div>
           <div class="key-def">
             <strong>Definition:</strong> The foundational database architecture used by search engines that maps <span class="buzzword">individual words/terms directly to the list of document IDs</span> containing them.<br>
-            <em>Why it matters:</em> Sequential full-text scanning across billions of web pages is computationally impossible. An inverted index enables instant $O(1)$ / logarithmic query retrieval.
+            <em>Why it matters:</em> Sequential full-text scanning across billions of web pages is computationally impossible. An inverted index enables instant O(1) / logarithmic query retrieval.
           </div>
           <div style="background:var(--bg-card); padding:8px 12px; border-radius:6px; font-family:var(--font-mono); font-size:0.75rem; margin-top:6px; border:1px solid var(--border);">
-            "database" $\rightarrow$ [Doc 1: pos 4], [Doc 3: pos 12], [Doc 7: pos 2]<br>
-            "metadata" $\rightarrow$ [Doc 1: pos 8], [Doc 2: pos 1], [Doc 4: pos 5]
+            "database" → [Doc 1: pos 4], [Doc 3: pos 12], [Doc 7: pos 2]<br>
+            "metadata" → [Doc 1: pos 8], [Doc 2: pos 1], [Doc 4: pos 5]
           </div>
         </div>
       </article>
@@ -981,10 +1095,10 @@
         <div class="content-block amber">
           <div class="block-title">⚠️ THE 4 EXAMINER PITFALL SHIELDS</div>
           <div class="key-def" style="font-size:0.8rem; line-height:1.5;">
-            • <strong>Shield 1:</strong> Validation $\neq$ Verification! Validation = automated system checks (Type, Range, Format); Verification = checking against original source / double-entry.<br>
-            • <strong>Shield 2:</strong> Database $\neq$ DBMS! MySQL is the DBMS software suite; database is the collection of data.<br>
-            • <strong>Shield 3:</strong> SEO $\neq$ SEM! SEO is strictly organic/unpaid; Google Ads PPC is SEM.<br>
-            • <strong>Shield 4:</strong> RDA $\neq$ Markup Language! XML is a markup language; RDA is a cataloguing content standard based on FRBR.
+            • <strong>Shield 1:</strong> Validation ≠ Verification! Validation = automated system checks (Type, Range, Format); Verification = checking against original source / double-entry.<br>
+            • <strong>Shield 2:</strong> Database ≠ DBMS! MySQL is the DBMS software suite; database is the collection of data.<br>
+            • <strong>Shield 3:</strong> SEO ≠ SEM! SEO is strictly organic/unpaid; Google Ads PPC is SEM.<br>
+            • <strong>Shield 4:</strong> RDA ≠ Markup Language! XML is a markup language; RDA is a cataloguing content standard based on FRBR.
           </div>
         </div>
 
@@ -1025,88 +1139,154 @@
 
         <!-- Panel 1 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 1] COVER &amp; RADAR</strong><br>
-          <strong>INL 220 50% Lockdown</strong><br>
-          Target: 30 / 60 M.<br>
-          <strong>Formulas:</strong><br>
-          • TRPF: Type, Range, Presence, Format.<br>
-          • DSA: Descriptive, Structural, Admin.<br>
-          • CIR: Crawl, Index, Rank.<br>
-          • ACID: Atomicity, Consistency, Isolation, Durability.
+          <div class="panel-hdr">
+            <span>[P. 1] PASS LOCKDOWN &amp; RADAR</span>
+            <span class="code-tag">30/60 M (50%)</span>
+          </div>
+          <div><strong>UP EBIT Subminimum:</strong> Theory ≥ 40% (24/60 M). Aiming for <strong>30/60 M</strong> completely locks exam entry.</div>
+          <div class="panel-sec">4 Core Punch Formulas</div>
+          <div>• <strong>T-R-P-F (Validation):</strong> Type, Range, Presence, Format.</div>
+          <div>• <strong>D-S-A (Metadata):</strong> Descriptive, Structural, Administrative.</div>
+          <div>• <strong>C-I-R (Search Engines):</strong> Crawl → Index → Rank.</div>
+          <div>• <strong>A-C-I-D (RDBMS):</strong> Atomicity, Consistency, Isolation, Durability.</div>
+          <div>• <strong>F-R-B-R (Cataloguing):</strong> Work, Expression, Manifestation, Item.</div>
+          <div class="panel-sec">Paper 2 Structure (60 Marks)</div>
+          <div>• <strong>Sec A (~30M):</strong> Matching (8M), Definitions (10M), Validation Code (6M), Short (6M).</div>
+          <div>• <strong>Sec B (~30M):</strong> 12-Mark SEO Essay + Short Essay.</div>
         </div>
 
         <!-- Panel 2 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 2] THEME 4 METADATA</strong><br>
-          <strong>Metadata:</strong> Data about data facilitating discovery/management.<br>
-          <strong>3 Types:</strong> Descriptive (Title/Author), Structural (Chapters), Admin (Tech, Rights, Preservation).<br>
-          <strong>RDA vs AACR:</strong> RDA = web content standard on FRBR model; AACR = paper card catalogs.<br>
-          <strong>XML:</strong> Custom tags.<br>
-          <strong>OWL:</strong> Ontologies for reasoning.<br>
-          <strong>DCMI:</strong> 15 elements.
+          <div class="panel-hdr">
+            <span>[P. 2] THEME 4: METADATA &amp; ORG</span>
+            <span class="code-tag">THEME 4</span>
+          </div>
+          <div><strong>Metadata Definition:</strong> Structured info describing resources to aid discovery, identification, use, and preservation.</div>
+          <div class="panel-sec">3 Primary Classes</div>
+          <div>• <strong>Descriptive:</strong> Title, Author, Subject (find &amp; identify).</div>
+          <div>• <strong>Structural:</strong> Chapters, Pages, TOC (how parts assemble).</div>
+          <div>• <strong>Administrative:</strong> Tech (codec), Rights (IP/copyright), Preservation (archival checksums/fixity).</div>
+          <div class="panel-sec">Standards &amp; Syntax</div>
+          <div>• <strong>RDA vs AACR2:</strong> RDA = modern web content standard based on FRBR model; AACR2 = card catalog standard.</div>
+          <div>• <strong>XML:</strong> Hierarchical markup syntax &amp; custom tags.</div>
+          <div>• <strong>OWL:</strong> Web Ontology Language for semantic reasoning.</div>
+          <div>• <strong>Dublin Core (15):</strong> Title, Creator, Subject, Desc, Publisher, Contributor, Date, Type, Format, Identifier, Source, Lang, Relation, Coverage, Rights.</div>
         </div>
 
         <!-- Panel 3 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 3] THEME 5 DATABASES</strong><br>
-          <strong>DB vs DBMS:</strong> DB is data; DBMS is software (MySQL, Oracle).<br>
-          <strong>Keys:</strong> PK = Unique record ID; FK = links to parent PK.<br>
-          <strong>ACID:</strong> Atomicity (all/none), Consistency (rules), Isolation (independent), Durability (permanent).<br>
-          <strong>RDBMS vs NoSQL:</strong> Relational = tables, SQL, ACID, banking. NoSQL = JSON docs, flexible, horizontal scale, social feeds.
+          <div class="panel-hdr">
+            <span>[P. 3] THEME 5: RELATIONAL DATABASES</span>
+            <span class="code-tag">THEME 5</span>
+          </div>
+          <div><strong>Database vs DBMS:</strong> DB = structured data collection; DBMS = software suite (MySQL, Postgres) managing queries, security, transactions.</div>
+          <div class="panel-sec">Keys &amp; Referential Integrity</div>
+          <div>• <strong>Primary Key (PK):</strong> Unique, non-null record identifier.</div>
+          <div>• <strong>Foreign Key (FK):</strong> References PK in another table.</div>
+          <div>• <strong>Referential Integrity:</strong> FK value MUST match valid parent PK or be NULL; prevents orphaned records.</div>
+          <div class="panel-sec">ACID Transactions (Guaranteed 4M)</div>
+          <div>• <strong>Atomicity:</strong> All-or-nothing (debit requires credit).</div>
+          <div>• <strong>Consistency:</strong> Preserves all database integrity rules.</div>
+          <div>• <strong>Isolation:</strong> Concurrent transactions do not collide.</div>
+          <div>• <strong>Durability:</strong> Committed data survives system crashes.</div>
+          <div class="panel-sec">RDBMS vs NoSQL</div>
+          <div>• <strong>RDBMS:</strong> Tables, SQL, ACID, strict schemas (finance).</div>
+          <div>• <strong>NoSQL:</strong> JSON docs, BASE eventual consistency (feeds).</div>
         </div>
 
         <!-- Panel 4 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 4] DATA VALIDATION</strong><br>
-          <strong>Validation != Verification:</strong> Validation = automated system checks; Verification = checking against source.<br>
-          <strong>4 Validation Checks:</strong><br>
-          1. <em>Type:</em> Age = 21 (rejects "twenty").<br>
-          2. <em>Range:</em> Marks 0 to 100.<br>
-          3. <em>Presence:</em> StudentID != NULL.<br>
-          4. <em>Format:</em> ...@up.ac.za / 13-digit ID.
+          <div class="panel-hdr">
+            <span>[P. 4] THEME 5: DATA VALIDATION</span>
+            <span class="code-tag">THEME 5</span>
+          </div>
+          <div><strong>Validation ≠ Verification:</strong> Validation = automated computer logic check (sensible &amp; valid); Verification = confirms match against external real-world source (double entry, proofing).</div>
+          <div class="panel-sec">The 4 Primary Checks &amp; Code</div>
+          <div>1. <strong>Type Check:</strong> Confirms correct data type.<br><span class="code-tag">typeof age === 'number'</span> (rejects "twenty").</div>
+          <div>2. <strong>Range Check:</strong> Confirms value is within bounds.<br><span class="code-tag">mark &gt;= 0.0 &amp;&amp; mark &lt;= 100.0</span> (rejects -5, 105).</div>
+          <div>3. <strong>Presence Check:</strong> Confirms field is not empty.<br><span class="code-tag">id !== null &amp;&amp; id.trim() !== ''</span> (rejects NULL).</div>
+          <div>4. <strong>Format Check:</strong> Matches predefined regex pattern.<br><span class="code-tag">/^u\d{8}@tuks\.co\.za$/</span> (UP student email).</div>
+          <div class="panel-sec">Additional Integrity Checks</div>
+          <div>• <strong>Length:</strong> Characters within limits (<span class="code-tag">pw.length &gt;= 8</span>).</div>
+          <div>• <strong>Lookup:</strong> Value in table (valid SA province code).</div>
+          <div>• <strong>Check Digit:</strong> Luhn algorithm on final digit (ID/cards).</div>
         </div>
 
         <!-- Panel 5 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 5] SEARCH ENGINES</strong><br>
-          <strong>3 Phases:</strong><br>
-          1. <em>Crawl:</em> Googlebot traverses hyperlinks.<br>
-          2. <em>Index:</em> Parsed into Inverted Index.<br>
-          3. <em>Rank:</em> Algorithmic SERP scoring.<br>
-          <strong>Inverted Index:</strong> Database mapping words to document URLs for split-second $O(1)$ query retrieval.
+          <div class="panel-hdr">
+            <span>[P. 5] THEME 6.1: SEARCH ENGINES</span>
+            <span class="code-tag">THEME 6.1</span>
+          </div>
+          <div class="panel-sec">3-Phase Search Engine Lifecycle</div>
+          <div>1. <strong>Crawling:</strong> Automated bots (Googlebot/spiders) traverse web hyperlinks to discover pages; guided by <span class="code-tag">robots.txt</span> &amp; XML sitemaps.</div>
+          <div>2. <strong>Indexing:</strong> Downloaded HTML parsed, tokenized, normalized (stop-words removed, stemmed), and stored in an Inverted Index.</div>
+          <div>3. <strong>Ranking:</strong> Queries matched against index, scored via algorithms (PageRank, TF-IDF, speed, mobile), outputting SERP.</div>
+          <div class="panel-sec">Inverted Index (Core Architecture)</div>
+          <div>• <strong>Definition:</strong> Foundational database mapping words/terms directly to document IDs and word positions:</div>
+          <div style="background:#F1F5F9; padding:2px 4px; font-family:monospace; font-size:5.2pt; border:0.5px solid #CBD5E1; border-radius:2px; margin:1mm 0;">
+            "database" → [Doc 1: pos 4], [Doc 3: pos 12]<br>
+            "metadata" → [Doc 1: pos 8], [Doc 2: pos 1]
+          </div>
+          <div>• <strong>Why Essential:</strong> Scanning billions of pages sequentially is impossible. Inverted index enables instant O(1) / logarithmic query retrieval.</div>
         </div>
 
         <!-- Panel 6 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 6] SEO RUBRIC</strong><br>
-          <strong>On-Page:</strong><br>
-          • Title &lt; 60 chars (keyword first).<br>
-          • Meta Description &lt; 160 chars.<br>
-          • Single H1 hierarchy.<br>
-          • Image Alt text.<br>
-          • Clean URL slugs.<br>
-          <strong>Tech/Off-Page:</strong><br>
-          Mobile-first, HTTPS SSL, fast speed, XML sitemap, robots.txt, authoritative backlinks.
+          <div class="panel-hdr">
+            <span>[P. 6] THEME 6.2: SEO MASTER RUBRIC</span>
+            <span class="code-tag">THEME 6.2</span>
+          </div>
+          <div class="panel-sec">On-Page SEO Checklist</div>
+          <div>• <strong>Title Tag:</strong> &lt; 60 chars, front-load keyword, brand at end.</div>
+          <div>• <strong>Meta Description:</strong> &lt; 160 chars, clear summary &amp; CTA.</div>
+          <div>• <strong>Headings:</strong> Single <span class="code-tag">&lt;h1&gt;</span> per page; logical <span class="code-tag">&lt;h2&gt;</span>/<span class="code-tag">&lt;h3&gt;</span>.</div>
+          <div>• <strong>Image Alt Text:</strong> Descriptive accessibility text for spiders.</div>
+          <div>• <strong>Clean URLs:</strong> Short, lowercase, hyphenated slugs (<span class="code-tag">/courses/inl220</span>).</div>
+          <div class="panel-sec">Technical &amp; Off-Page SEO</div>
+          <div>• <strong>Mobile-First:</strong> Responsive viewport (<span class="code-tag">meta viewport</span>).</div>
+          <div>• <strong>Core Web Vitals:</strong> LCP &lt; 2.5s, INP &lt; 200ms, CLS &lt; 0.1.</div>
+          <div>• <strong>Security:</strong> HTTPS SSL/TLS encryption (confirmed ranking signal).</div>
+          <div>• <strong>Discovery:</strong> <span class="code-tag">sitemap.xml</span> pathing; <span class="code-tag">robots.txt</span> access control.</div>
+          <div>• <strong>Backlinks:</strong> High-authority external links pass PageRank equity.</div>
         </div>
 
         <!-- Panel 7 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 7] 12-M MODEL ESSAY</strong><br>
-          <strong>P1:</strong> SEO definition &amp; shift to inbound marketing.<br>
-          <strong>P2:</strong> On-Page: Title &lt;60, Meta &lt;160, H1, Alt text, clean URLs.<br>
-          <strong>P3:</strong> Technical: Mobile speed, HTTPS, XML sitemaps, authoritative backlinks.<br>
-          <strong>P4:</strong> White-Hat user satisfaction vs Black-Hat keyword stuffing penalties.
+          <div class="panel-hdr">
+            <span>[P. 7] THEME 6.2: 12-MARK MODEL ESSAY</span>
+            <span class="code-tag">12 MARKS</span>
+          </div>
+          <div class="panel-sec">Paragraph 1: Definition &amp; Inbound (3M)</div>
+          <div>SEO is the process of optimizing website content, HTML markup, and technical infrastructure to increase organic search visibility. Shifts away from intrusive outbound marketing to inbound: pulls high-intent users actively seeking answers.</div>
+          <div class="panel-sec">Paragraph 2: On-Page Architecture (3M)</div>
+          <div>High-intent keywords placed naturally. Unique <span class="code-tag">&lt;title&gt;</span> (&lt;60 chars) and meta description (&lt;160 chars). Strict semantic heading structure (single <span class="code-tag">&lt;h1&gt;</span>, nested <span class="code-tag">&lt;h2&gt;</span>/<span class="code-tag">&lt;h3&gt;</span>), descriptive image <span class="code-tag">alt</span> text, and clean URL slugs.</div>
+          <div class="panel-sec">Paragraph 3: Technical &amp; Off-Page (3M)</div>
+          <div>Ensures bots can crawl/index: fast loading (Core Web Vitals), mobile-first responsive design, HTTPS encryption, <span class="code-tag">sitemap.xml</span> and <span class="code-tag">robots.txt</span>. Authoritative backlinks pass domain equity.</div>
+          <div class="panel-sec">Paragraph 4: Ethics &amp; Penalties (3M)</div>
+          <div>Follow White-Hat guidelines prioritizing user experience. Avoid Black-Hat (keyword stuffing, cloaking, hidden text, PBNs) which trigger severe ranking demotion or permanent de-indexing penalties.</div>
         </div>
 
         <!-- Panel 8 -->
         <div class="sheet-panel">
-          <strong style="color:var(--teal-primary);">[PAGE 8] SHIELDS &amp; MATCHING</strong><br>
-          <strong>4 Pitfall Shields:</strong><br>
-          • Validation != Verification<br>
-          • Database != DBMS<br>
-          • SEO != SEM (PPC)<br>
-          • RDA != Markup Language<br>
-          <strong>Matching Key:</strong> RDA (FRBR standard), XML (markup), OWL (ontology), Inverted Index (term database), FK (PK link).
+          <div class="panel-hdr">
+            <span>[P. 8] SHIELDS &amp; MATCHING KEYS</span>
+            <span class="code-tag">BACK COVER</span>
+          </div>
+          <div class="panel-sec">The 4 Examiner Pitfall Shields</div>
+          <div>• <strong>Shield 1:</strong> Validation ≠ Verification! (Validation = automated logic check; Verification = source check).</div>
+          <div>• <strong>Shield 2:</strong> Database ≠ DBMS! (DB = data store; DBMS = MySQL software engine).</div>
+          <div>• <strong>Shield 3:</strong> SEO ≠ SEM! (SEO = organic/unpaid; SEM = paid PPC Google Ads).</div>
+          <div>• <strong>Shield 4:</strong> RDA ≠ Markup Language! (XML = markup; RDA = cataloguing content standard on FRBR).</div>
+          <div class="panel-sec">Guaranteed Matching Key (8 Marks)</div>
+          <div>• <strong>RDA:</strong> Content standard replacing AACR based on FRBR.</div>
+          <div>• <strong>XML:</strong> Markup language with custom hierarchical tags.</div>
+          <div>• <strong>OWL:</strong> Semantic Web ontology language for machine reasoning.</div>
+          <div>• <strong>Inverted Index:</strong> Word-to-document database for instant search.</div>
+          <div>• <strong>Foreign Key:</strong> Attribute linking to Primary Key of another table.</div>
+          <div>• <strong>ACID:</strong> Transaction properties ensuring database integrity.</div>
+          <div class="panel-sec">09:30 Informatorium Checklist</div>
+          <div>Doors close 09:40. Structure essay in 4 numbered paragraphs!</div>
         </div>
       </div>
     </div>
