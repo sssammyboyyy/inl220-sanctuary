@@ -807,26 +807,195 @@
     .voice-btn:hover { transform: scale(1.08); }
     .voice-title { font-size: 0.88rem; font-weight: 800; color: var(--text-primary); line-height: 1.2; }
     .voice-sub { font-size: 0.74rem; color: var(--text-muted); }
-    @media (max-width: 480px) {
-      .voice-dock {
-        padding: 8px 14px;
-        gap: 10px;
-      }
-      .voice-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 0.95rem;
-      }
-      .voice-title {
-        font-size: 0.8rem;
-      }
-      .voice-sub {
-        font-size: 0.68rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 220px;
-      }
+    /* Voice Speed Multiplier */
+    .voice-speed-group {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--bg-subtle);
+      padding: 3px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .speed-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .speed-btn.active {
+      background: var(--teal-primary);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px -1px rgba(15, 118, 110, 0.4);
+    }
+
+    /* Hallway Door 60s Card */
+    .door-banner {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(67, 56, 202, 0.08));
+      border: 2px solid var(--teal-primary);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .door-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .mnemonic-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      transition: var(--transition);
+    }
+    .mnemonic-chip:hover {
+      border-color: var(--teal-primary);
+      transform: translateY(-2px);
+    }
+    .chip-formula {
+      font-family: var(--font-mono);
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--teal-primary);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+    .chip-subtitle {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .chip-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Examiner Pitfall Shields */
+    .traps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .trap-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      border-left: 5px solid var(--amber);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .trap-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--amber);
+      background: var(--amber-soft);
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 8px;
+    }
+    .trap-wrong {
+      color: var(--rose);
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .trap-right {
+      color: var(--emerald);
+      font-weight: 700;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* 60s Exam Fire Drill */
+    .drill-question-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .drill-q-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+    .drill-opt {
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+    .drill-opt:hover {
+      background: var(--bg-card);
+      border-color: var(--teal-primary);
+    }
+    .drill-opt.correct {
+      background: var(--emerald-soft) !important;
+      border-color: var(--emerald) !important;
+      color: var(--emerald) !important;
+    }
+    .drill-opt.wrong {
+      background: var(--rose-soft) !important;
+      border-color: var(--rose) !important;
+      color: var(--rose) !important;
+    }
+    .drill-feedback {
+      margin-top: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      display: none;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+    }
+    .drill-feedback.shown { display: block; }
+    .drill-feedback.success { background: var(--emerald-soft); color: var(--emerald); }
+    .drill-feedback.fail { background: var(--rose-soft); color: var(--rose); }
+
+    /* Rubric Buzzword Highlighter */
+    .buzzword {
+      background: linear-gradient(120deg, rgba(15, 118, 110, 0.15), rgba(5, 150, 105, 0.15));
+      border-bottom: 2px solid var(--teal-primary);
+      font-weight: 800;
+      color: var(--teal-primary);
+      padding: 0 4px;
+      border-radius: 3px;
     }
   </style>
 </head>
@@ -851,6 +1020,12 @@
       </div>
 
       <div class="ctrl-group">
+        <button class="tool-btn" onclick="navigateTab(1)" title="Open the 60-Second Hallway Mnemonic Pocket Sheet">
+          🚪 Door Card
+        </button>
+        <button class="tool-btn" onclick="navigateTab(4)" title="Take the 60-second rapid-fire active recall drill">
+          🔥 Fire Drill
+        </button>
         <button class="tool-btn" id="panicBtn" onclick="toggleEssentials()" title="Collapse all to 10-word gold sentences">
           🌿 10-Word Panic
         </button>
@@ -913,10 +1088,12 @@
     <!-- TAB NAVIGATION -->
     <nav class="tab-nav">
       <button class="tab-link active" onclick="navigateTab(0)">⚡ 30-Mark Fast Path</button>
-      <button class="tab-link" onclick="navigateTab(1)">🧭 3 Core Pillars</button>
-      <button class="tab-link" onclick="navigateTab(2)">✍️ 12-Mark Essay Forge</button>
-      <button class="tab-link" onclick="navigateTab(3)">🎮 Interactive Arena</button>
-      <button class="tab-link" onclick="navigateTab(4)">⚡ Flashcard Sprint</button>
+      <button class="tab-link" onclick="navigateTab(1)">🚪 60s Hallway Card</button>
+      <button class="tab-link" onclick="navigateTab(2)">🧭 3 Core Pillars</button>
+      <button class="tab-link" onclick="navigateTab(3)">✍️ 12-Mark Essay Forge</button>
+      <button class="tab-link" onclick="navigateTab(4)">🔥 60s Fire Drill</button>
+      <button class="tab-link" onclick="navigateTab(5)">🎮 Interactive Arena</button>
+      <button class="tab-link" onclick="navigateTab(6)">⚡ Flashcard Sprint</button>
     </nav>
 
     <!-- ==================== TAB 0: 30-MARK FAST PATH ==================== -->
@@ -979,6 +1156,46 @@
         </div>
       </article>
 
+      <!-- EXAMINER PITFALL SHIELDS -->
+      <article class="cram-card" style="border-left: 5px solid var(--amber);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="card-badge badge-amber">Defensive Marks • Avoid the 4 Big Disasters</span>
+          <button class="check-btn" onclick="toggleMastery(this, 6)">✓</button>
+        </div>
+        <div class="cram-heading">
+          <span>⚠️ The 4 Traps Dr Makhafola Uses to Fail Students</span>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:12px;">
+          Markers deduct easy marks when students confuse these closely related terms. Arm yourself with these shields:
+        </p>
+
+        <div class="traps-grid">
+          <div class="trap-card">
+            <span class="trap-badge">Trap 1 • Verification vs Validation</span>
+            <span class="trap-wrong">❌ WRONG: "Validation is typing the password twice to check it matches."</span>
+            <span class="trap-right">✅ RIGHT: That is <strong>Verification</strong>! <strong>Validation</strong> is automated software checks (Type, Range, Format) ensuring data obeys system rules before database acceptance.</span>
+          </div>
+
+          <div class="trap-card">
+            <span class="trap-badge">Trap 2 • Database vs DBMS</span>
+            <span class="trap-wrong">❌ WRONG: "MySQL and Oracle are databases."</span>
+            <span class="trap-right">✅ RIGHT: MySQL is the <strong>DBMS</strong> (the software management system)! The <strong>database</strong> is the structured collection of stored data itself.</span>
+          </div>
+
+          <div class="trap-card">
+            <span class="trap-badge">Trap 3 • SEO vs SEM / Google Ads</span>
+            <span class="trap-wrong">❌ WRONG: "SEO includes paying Google to place your website at the top of search."</span>
+            <span class="trap-right">✅ RIGHT: That is <strong>SEM / PPC (Paid Ads)</strong>! SEO is strictly <strong>organic (unpaid)</strong> algorithmic ranking achieved through content, speed, and backlinks.</span>
+          </div>
+
+          <div class="trap-card">
+            <span class="trap-badge">Trap 4 • RDA Classification</span>
+            <span class="trap-wrong">❌ WRONG: "RDA is a programming language or an XML schema."</span>
+            <span class="trap-right">✅ RIGHT: RDA is a <strong>cataloguing content standard</strong> based on the FRBR model for web resources. It replaced the paper card-catalog standard AACR.</span>
+          </div>
+        </div>
+      </article>
+
       <!-- FAST DEFINITIONS STRIP -->
       <article class="cram-card">
         <span class="card-badge badge-teal">Section 1 • The 5 Guaranteed Definitions (5-6 Marks)</span>
@@ -1006,8 +1223,92 @@
 
     </section>
 
-    <!-- ==================== TAB 1: 3 CORE PILLARS ==================== -->
+    <!-- ==================== TAB 1: 60s HALLWAY POCKET CARD ==================== -->
     <section id="tab-1" class="tab-content">
+      
+      <div class="door-banner">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+          <div>
+            <span class="card-badge badge-rose">⚡ Standing Outside Informatorium Door • 60-Second Scan</span>
+            <h2 style="font-family:var(--font-serif); font-size:1.6rem; color:var(--text-primary); margin:6px 0;">
+              The "Hallway Door" Mnemonic Cheat Sheet
+            </h2>
+            <p style="font-size:0.9rem; color:var(--text-secondary); max-width:640px;">
+              Your last 60 seconds before putting your phone into your bag. Scan these 6 mnemonic formulas into short-term memory right now.
+            </p>
+          </div>
+          <button class="tool-btn" onclick="playHarmonicBowl(720); triggerHaptic(30); alert('Mnemonic card locked! Take 3 deep breaths and walk in.')">
+            🧘 Locked in Memory
+          </button>
+        </div>
+
+        <div class="door-grid">
+          <div class="mnemonic-chip">
+            <span class="chip-formula">T - R - P - F</span>
+            <span class="chip-subtitle">4 Data Validation Checks</span>
+            <div class="chip-desc">
+              • <strong>T</strong>ype: <code>Age = 21</code> (rejects text)<br>
+              • <strong>R</strong>ange: <code>Mark = 0.0 - 100.0</code><br>
+              • <strong>P</strong>resence: <code>StudentID != NULL</code><br>
+              • <strong>F</strong>ormat: <code>...@up.ac.za</code> (13-digit ID)
+            </div>
+          </div>
+
+          <div class="mnemonic-chip">
+            <span class="chip-formula">D - S - A</span>
+            <span class="chip-subtitle">3 Classes of Metadata</span>
+            <div class="chip-desc">
+              • <strong>D</strong>escriptive: Title, Author, Subject (Discovery)<br>
+              • <strong>S</strong>tructural: Chapters, pages, assembly<br>
+              • <strong>A</strong>dministrative: Technical, Rights, Preservation
+            </div>
+          </div>
+
+          <div class="mnemonic-chip">
+            <span class="chip-formula">C - I - R</span>
+            <span class="chip-subtitle">Search Engine 3-Step Triad</span>
+            <div class="chip-desc">
+              • <strong>C</strong>rawling: Spiders follow links<br>
+              • <strong>I</strong>ndexing: Stored in <span class="buzzword">Inverted Index</span><br>
+              • <strong>R</strong>anking: Algorithmic SERP scoring
+            </div>
+          </div>
+
+          <div class="mnemonic-chip">
+            <span class="chip-formula">RDA vs AACR</span>
+            <span class="chip-subtitle">Cataloguing Revolution</span>
+            <div class="chip-desc">
+              • <strong>RDA:</strong> Web content standard, <span class="buzzword">FRBR model</span>, digital resources.<br>
+              • <strong>AACR:</strong> Legacy physical card catalogue rules.
+            </div>
+          </div>
+
+          <div class="mnemonic-chip">
+            <span class="chip-formula">RDBMS vs NoSQL</span>
+            <span class="chip-subtitle">Database Architecture</span>
+            <div class="chip-desc">
+              • <strong>Relational:</strong> Tables, SQL, <span class="buzzword">ACID</span>, Banking &amp; Grades.<br>
+              • <strong>NoSQL:</strong> JSON docs, dynamic schemas, scale, Social Media feeds.
+            </div>
+          </div>
+
+          <div class="mnemonic-chip">
+            <span class="chip-formula">12-M ESSAY BLUEPRINT</span>
+            <span class="chip-subtitle">The 4 Paragraphs</span>
+            <div class="chip-desc">
+              • <strong>P1:</strong> SEO Def + Inbound Marketing<br>
+              • <strong>P2:</strong> On-Page: Title &lt;60, Meta &lt;160, H1, Alt text<br>
+              • <strong>P3:</strong> Tech: Mobile speed, HTTPS, XML sitemap<br>
+              • <strong>P4:</strong> White-Hat user value vs Black-Hat stuffing
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== TAB 2: 3 CORE PILLARS ==================== -->
+    <section id="tab-2" class="tab-content">
       
       <!-- PILLAR 1: THEME 4 -->
       <article class="cram-card">
@@ -1109,8 +1410,8 @@
 
     </section>
 
-    <!-- ==================== TAB 2: 12-MARK ESSAY FORGE ==================== -->
-    <section id="tab-2" class="tab-content">
+    <!-- ==================== TAB 3: 12-MARK ESSAY FORGE ==================== -->
+    <section id="tab-3" class="tab-content">
       
       <!-- ESSAY 1 -->
       <article class="cram-card">
@@ -1180,8 +1481,75 @@
 
     </section>
 
-    <!-- ==================== TAB 3: INTERACTIVE ARENA ==================== -->
-    <section id="tab-3" class="tab-content">
+    <!-- ==================== TAB 4: 60s EXAM FIRE DRILL ==================== -->
+    <section id="tab-4" class="tab-content">
+      
+      <article class="cram-card">
+        <span class="card-badge badge-rose">Active Retrieval Engine • 60-Second Challenge</span>
+        <div class="cram-heading">
+          <span>🔥 5-Question Informatorium Readiness Test</span>
+          <span style="font-size:1rem; font-weight:800; color:var(--teal-primary);">Score: <span id="drillScore">0</span> / 5</span>
+        </div>
+
+        <p style="color:var(--text-secondary); margin-bottom:18px; font-size:0.92rem;">
+          Don't just read. Force your brain to retrieve the answers. Tap each question once. Real test questions from Dr Makhafola's question pool:
+        </p>
+
+        <!-- Q1 -->
+        <div class="drill-question-box" id="dq-1">
+          <div class="drill-q-title">1. Which class of metadata specifies how compound digital objects are assembled, such as chapter hierarchy in an e-book?</div>
+          <div class="drill-opt" onclick="answerDrill(1, this, false, 'Incorrect. Descriptive metadata is title, author, and subject keywords for discovery.')">A) Descriptive Metadata</div>
+          <div class="drill-opt" onclick="answerDrill(1, this, true, 'Bingo! Structural metadata defines internal sequencing and chapter relationships.')">B) Structural Metadata</div>
+          <div class="drill-opt" onclick="answerDrill(1, this, false, 'Incorrect. Administrative metadata handles technical specs, copyright, and preservation.')">C) Administrative Metadata</div>
+          <div class="drill-feedback" id="df-1"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="drill-question-box" id="dq-2">
+          <div class="drill-q-title">2. What is the foundational search engine database architecture that maps individual keywords directly to the URLs containing them?</div>
+          <div class="drill-opt" onclick="answerDrill(2, this, false, 'Incorrect. Relational tables are not used for full-text web search indexation.')">A) Relational B-Tree Table</div>
+          <div class="drill-opt" onclick="answerDrill(2, this, true, 'Correct! The Inverted Index is the core architecture that enables split-second SERP retrieval.')">B) Inverted Index</div>
+          <div class="drill-opt" onclick="answerDrill(2, this, false, 'Incorrect. A Junction table only resolves Many-to-Many relational links.')">C) Foreign Key Junction Table</div>
+          <div class="drill-feedback" id="df-2"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="drill-question-box" id="dq-3">
+          <div class="drill-q-title">3. A database form allows a student to enter their Age as integer 20, but immediately rejects the input &quot;twenty&quot;. Which validation check is this?</div>
+          <div class="drill-opt" onclick="answerDrill(3, this, true, 'Spot on! Type Check confirms that data matches the expected data type (integer vs string).')">A) Type Check</div>
+          <div class="drill-opt" onclick="answerDrill(3, this, false, 'Incorrect. Range Check tests numbers between minimum and maximum boundaries (e.g. 0 to 100).')">B) Range Check</div>
+          <div class="drill-opt" onclick="answerDrill(3, this, false, 'Incorrect. Presence Check prevents the field from being submitted blank (NULL).')">C) Presence Check</div>
+          <div class="drill-feedback" id="df-3"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="drill-question-box" id="dq-4">
+          <div class="drill-q-title">4. Why was Anglo-American Cataloguing Rules (AACR) replaced by Resource Description and Access (RDA)?</div>
+          <div class="drill-opt" onclick="answerDrill(4, this, false, 'Incorrect. RDA is a content cataloguing standard, NOT a markup language or XML schema.')">A) RDA is an XML schema required by search engines</div>
+          <div class="drill-opt" onclick="answerDrill(4, this, true, 'Exact exam phrase! AACR was designed for physical paper card catalogues; RDA is a web-native standard based on the FRBR model for digital/networked assets.')">B) AACR was built for paper card catalogues; RDA is a web-native standard grounded in the FRBR model</div>
+          <div class="drill-opt" onclick="answerDrill(4, this, false, 'Incorrect. RDA does not replace databases; it standardizes resource cataloguing.')">C) RDA replaced MySQL as the relational database standard</div>
+          <div class="drill-feedback" id="df-4"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="drill-question-box" id="dq-5">
+          <div class="drill-q-title">5. In the 12-mark essay, which of the following is considered an ethical White-Hat SEO implementation practice?</div>
+          <div class="drill-opt" onclick="answerDrill(5, this, false, 'Incorrect. Repeating keywords unnaturally is keyword stuffing (Black-Hat) and results in penalties!')">A) Keyword stuffing invisible white text on white backgrounds</div>
+          <div class="drill-opt" onclick="answerDrill(5, this, false, 'Incorrect. Buying backlinks from private link networks is manipulative Black-Hat SEO.')">B) Buying backlinks from private blog networks</div>
+          <div class="drill-opt" onclick="answerDrill(5, this, true, 'Full marks! Unique title tags (&lt;60 chars), meta descriptions (&lt;160 chars), H1 hierarchy, fast mobile speed, and quality backlinks are pure White-Hat.')">C) Optimizing Title (&lt;60 chars), Meta Description (&lt;160 chars), H1 hierarchy, mobile speed, and organic backlinks</div>
+          <div class="drill-feedback" id="df-5"></div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:20px;">
+          <div id="drillOutcome" style="font-weight:800; font-size:1rem; color:var(--teal-primary);">Tap all 5 questions to test your pass readiness!</div>
+          <button class="tool-btn" onclick="resetDrill()">🔄 Reset Fire Drill</button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 5: INTERACTIVE ARENA ==================== -->
+    <section id="tab-5" class="tab-content">
       
       <article class="cram-card">
         <span class="card-badge badge-teal">Interactive Test Simulator • 6 Marks</span>
@@ -1206,8 +1574,8 @@
 
     </section>
 
-    <!-- ==================== TAB 4: FLASHCARD SPRINT ==================== -->
-    <section id="tab-4" class="tab-content">
+    <!-- ==================== TAB 6: FLASHCARD SPRINT ==================== -->
+    <section id="tab-6" class="tab-content">
       
       <div style="text-align:center; margin-bottom:14px;">
         <span class="card-badge badge-purple">Final 20 Minutes • Rapid Memory Sprint</span>
@@ -1248,9 +1616,14 @@
     <button class="voice-btn" id="voiceToggleBtn" onclick="toggleBroadcast()" title="Play / Pause High-Yield Voiceover">
       ▶
     </button>
-    <div>
+    <div style="flex:1; min-width:0;">
       <div class="voice-title" id="broadcastTitle">INL220 Radio Cram Broadcast</div>
-      <div class="voice-sub" id="broadcastSub">Listen with headphones on your way to the Informatorium</div>
+      <div class="voice-sub" id="broadcastSub">Listen with headphones on your walk</div>
+    </div>
+    <div class="voice-speed-group">
+      <button class="speed-btn active" onclick="setBroadcastRate(1.0, this)">1x</button>
+      <button class="speed-btn" onclick="setBroadcastRate(1.25, this)">1.25x</button>
+      <button class="speed-btn" onclick="setBroadcastRate(1.5, this)">1.5x</button>
     </div>
   </aside>
 
@@ -1500,6 +1873,84 @@
       alert('Model essay copied to clipboard! Paste into your notes or review on mobile.');
     }
 
+    // Speech Rate Multiplier
+    let currentSpeechRate = 1.0;
+    function setBroadcastRate(rate, btn) {
+      currentSpeechRate = rate;
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      triggerHaptic(15);
+      playHarmonicBowl(600);
+      if (isBroadcasting) {
+        window.speechSynthesis.cancel();
+        isBroadcasting = false;
+        toggleBroadcast();
+      }
+    }
+
+    // 60s Exam Fire Drill Engine
+    let drillAnswered = 0;
+    let drillScore = 0;
+    const answeredQuestions = new Set();
+
+    function answerDrill(qNum, optEl, isCorrect, feedbackText) {
+      if (answeredQuestions.has(qNum)) return;
+      answeredQuestions.add(qNum);
+      drillAnswered++;
+
+      const parentBox = document.getElementById(`dq-${qNum}`);
+      const feedbackBox = document.getElementById(`df-${qNum}`);
+
+      parentBox.querySelectorAll('.drill-opt').forEach(opt => opt.style.pointerEvents = 'none');
+
+      if (isCorrect) {
+        optEl.classList.add('correct');
+        feedbackBox.className = 'drill-feedback shown success';
+        feedbackBox.textContent = '✅ ' + feedbackText;
+        drillScore++;
+        playHarmonicBowl(880);
+        triggerHaptic(30);
+      } else {
+        optEl.classList.add('wrong');
+        feedbackBox.className = 'drill-feedback shown fail';
+        feedbackBox.textContent = '❌ ' + feedbackText;
+        playHarmonicBowl(220);
+        triggerHaptic([30, 40, 30]);
+      }
+
+      document.getElementById('drillScore').textContent = drillScore;
+
+      if (drillAnswered === 5) {
+        const pct = Math.round((drillScore / 5) * 100);
+        const outcomeEl = document.getElementById('drillOutcome');
+        if (drillScore >= 4) {
+          outcomeEl.innerHTML = `🎉 <strong>Score: ${drillScore}/5 (${pct}%)</strong> — Exam pass locked! Walk into the Informatorium with confidence.`;
+          playHarmonicBowl(1046);
+          triggerHaptic([40, 40, 60]);
+        } else {
+          outcomeEl.innerHTML = `⚠️ <strong>Score: ${drillScore}/5 (${pct}%)</strong> — Review the 60s Hallway Door Card before entering!`;
+        }
+      }
+    }
+
+    function resetDrill() {
+      drillAnswered = 0;
+      drillScore = 0;
+      answeredQuestions.clear();
+      document.getElementById('drillScore').textContent = '0';
+      document.getElementById('drillOutcome').textContent = 'Tap all 5 questions to test your pass readiness!';
+      document.querySelectorAll('.drill-opt').forEach(opt => {
+        opt.className = 'drill-opt';
+        opt.style.pointerEvents = 'auto';
+      });
+      document.querySelectorAll('.drill-feedback').forEach(fb => {
+        fb.className = 'drill-feedback';
+        fb.textContent = '';
+      });
+      playHarmonicBowl(432);
+      triggerHaptic(20);
+    }
+
     // Voiceover (Web Speech API)
     let isBroadcasting = false;
     function toggleBroadcast() {
@@ -1520,7 +1971,7 @@
         Arrive at the Informatorium by 9:30 AM. Write in structured paragraphs. You are ready to score over 50 percent!`;
 
         const u = new SpeechSynthesisUtterance(script);
-        u.rate = 1.05;
+        u.rate = currentSpeechRate;
         u.pitch = 1.0;
         u.onend = () => {
           isBroadcasting = false;
@@ -1530,7 +1981,7 @@
         window.speechSynthesis.speak(u);
         isBroadcasting = true;
         document.getElementById('voiceToggleBtn').textContent = '❚❚';
-        document.getElementById('broadcastSub').textContent = 'Broadcasting high-yield summary...';
+        document.getElementById('broadcastSub').textContent = `Broadcasting @ ${currentSpeechRate}x...`;
       }
     }
 
@@ -1539,10 +1990,10 @@
       window.speechSynthesis.cancel();
       const text = document.getElementById(id).innerText;
       const u = new SpeechSynthesisUtterance(text);
-      u.rate = 1.05;
+      u.rate = currentSpeechRate;
       window.speechSynthesis.speak(u);
       document.getElementById('voiceToggleBtn').textContent = '❚❚';
-      document.getElementById('broadcastSub').textContent = 'Reading essay aloud...';
+      document.getElementById('broadcastSub').textContent = `Reading essay @ ${currentSpeechRate}x...`;
       u.onend = () => {
         document.getElementById('voiceToggleBtn').textContent = '▶';
         document.getElementById('broadcastSub').textContent = 'Essay read complete.';
