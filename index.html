@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="INL220 Sanctuary" />
+  <meta name="theme-color" content="#F8FAF9" id="meta-theme-color" />
+  <title>INL220 Sanctuary — 1-Hour 50% Emergency Cram Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F8FAF9;
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      --bg-card: #FFFFFF;
+      --bg-subtle: #EEF3F1;
+      --text-primary: #111815;
+      --text-secondary: #404B46;
+      --text-muted: #73807A;
+      
+      --teal-primary: #0F766E;
+      --teal-vibrant: #0D9488;
+      --teal-soft: rgba(15, 118, 110, 0.12);
+      --emerald: #059669;
+      --emerald-soft: rgba(5, 150, 105, 0.12);
+      --indigo: #4338CA;
+      --indigo-soft: rgba(67, 56, 202, 0.12);
+      --amber: #D97706;
+      --amber-soft: rgba(217, 119, 6, 0.12);
+      --rose: #E11D48;
+      --rose-soft: rgba(225, 29, 72, 0.12);
+      --purple: #7E22CE;
+      --purple-soft: rgba(126, 34, 206, 0.12);
+
+      --border: rgba(17, 24, 21, 0.08);
+      --border-focus: #0F766E;
+      --shadow-sm: 0 4px 16px -2px rgba(15, 118, 110, 0.06);
+      --shadow-md: 0 12px 32px -4px rgba(17, 24, 21, 0.08);
+      --shadow-lg: 0 24px 56px -8px rgba(17, 24, 21, 0.12);
+      
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
+      
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #090C0B;
+      --bg-glass: rgba(14, 18, 16, 0.90);
+      --bg-card: #131715;
+      --bg-subtle: #1C221F;
+      --text-primary: #F2F5F4;
+      --text-secondary: #A6B4AF;
+      --text-muted: #64736D;
+      
+      --teal-primary: #14B8A6;
+      --teal-vibrant: #2DD4BF;
+      --teal-soft: rgba(20, 184, 166, 0.18);
+      --emerald: #34D399;
+      --emerald-soft: rgba(52, 211, 153, 0.18);
+      --indigo: #818CF8;
+      --indigo-soft: rgba(129, 140, 248, 0.18);
+      --amber: #FBBF24;
+      --amber-soft: rgba(251, 191, 36, 0.18);
+      --rose: #FB7185;
+      --rose-soft: rgba(251, 113, 133, 0.18);
+      --purple: #C084FC;
+      --purple-soft: rgba(192, 132, 252, 0.18);
+
+      --border: rgba(242, 245, 244, 0.08);
+      --shadow-sm: 0 4px 16px -2px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 12px 32px -4px rgba(0, 0, 0, 0.65);
+      --shadow-lg: 0 24px 56px -8px rgba(0, 0, 0, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 120px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    /* Essentials Mode */
+    body.essentials-mode .detail-block {
+      display: none !important;
+    }
+    body.essentials-mode .essential-strip {
+      border-left: 4px solid var(--teal-primary) !important;
+      background: var(--teal-soft) !important;
+      padding: 12px 18px !important;
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    /* Cloze / Recall Mode */
+    .cloze {
+      transition: var(--transition);
+      border-radius: 5px;
+      padding: 2px 7px;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1.2;
+    }
+    body.cloze-mode .cloze:not(.revealed) {
+      background: var(--teal-primary);
+      color: transparent;
+      user-select: none;
+      box-shadow: 0 0 0 1px var(--teal-vibrant);
+    }
+    body.cloze-mode .cloze:not(.revealed)::after {
+      content: 'tap';
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: -18px;
+    }
+    body.cloze-mode .cloze.revealed {
+      background: var(--teal-soft);
+      color: var(--teal-primary);
+      font-weight: 700;
+      box-shadow: none;
+    }
+
+    /* Top Emergency Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--teal-primary), var(--emerald));
+      display: grid;
+      place-items: center;
+      color: #FFFFFF;
+      font-family: var(--font-serif);
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px -2px rgba(15, 118, 110, 0.35);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .brand-text span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--teal-primary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .countdown-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rose-soft);
+      color: var(--rose);
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(225, 29, 72, 0.25);
+    }
+    .pulsing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--rose);
+      animation: pulseAnim 1.4s infinite;
+    }
+    @keyframes pulseAnim {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.75); opacity: 0.4; }
+    }
+
+    .ctrl-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .tool-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--teal-primary);
+      color: var(--teal-primary);
+    }
+    .tool-btn.active {
+      background: var(--teal-primary);
+      color: #FFFFFF;
+      border-color: var(--teal-primary);
+      box-shadow: 0 4px 14px -2px rgba(15, 118, 110, 0.4);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Hero HUD */
+    .hero-hud {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 820px) {
+      .hero-hud { grid-template-columns: 1fr; padding: 22px; }
+    }
+    .hero-hud::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, var(--teal-soft) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hud-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+    .hud-desc {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .mastery-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mastery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mastery-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--teal-primary);
+    }
+    .mastery-score {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .mastery-bar {
+      height: 10px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 99px;
+      overflow: hidden;
+      position: relative;
+    }
+    .mastery-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--teal-primary), var(--emerald));
+      border-radius: 99px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mastery-target-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--rose);
+      z-index: 2;
+    }
+    .mastery-footnote {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Tab Bar */
+    .tab-nav {
+      display: flex;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 6px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 26px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+    }
+    .tab-link {
+      flex: 1;
+      min-width: 150px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .tab-link.active {
+      background: var(--bg-card);
+      color: var(--teal-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Panels */
+    .tab-content {
+      display: none;
+      animation: tabFadeIn 0.28s ease;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .cram-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      margin-bottom: 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+    .cram-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(15, 118, 110, 0.25);
+    }
+    .card-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 12px;
+      letter-spacing: 0.06em;
+    }
+    .badge-teal { background: var(--teal-soft); color: var(--teal-primary); }
+    .badge-indigo { background: var(--indigo-soft); color: var(--indigo); }
+    .badge-amber { background: var(--amber-soft); color: var(--amber); }
+    .badge-rose { background: var(--rose-soft); color: var(--rose); }
+
+    .cram-heading {
+      font-family: var(--font-serif);
+      font-size: 1.48rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .check-btn {
+      appearance: none;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: transparent;
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .check-btn:hover {
+      border-color: var(--teal-primary);
+      color: var(--teal-primary);
+    }
+    .check-btn.checked {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px -1px rgba(5, 150, 105, 0.4);
+    }
+
+    .bullet-matrix {
+      list-style: none;
+      margin: 14px 0;
+    }
+    .bullet-matrix li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 12px;
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .bullet-matrix li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--teal-primary);
+      font-size: 0.75rem;
+      top: 5px;
+    }
+
+    .model-essay-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 16px;
+      border-left: 4px solid var(--teal-primary);
+    }
+    .model-essay-para {
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .model-essay-para:last-child { margin-bottom: 0; }
+    .para-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--teal-primary);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* Fast Path Visual Table */
+    .fast-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .fast-table th, .fast-table td {
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .fast-table th {
+      background: var(--bg-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .fast-table tr:last-child td { border-bottom: none; }
+    .fast-table tr:hover td { background: var(--teal-soft); }
+
+    /* Interactive Matching Arena */
+    .arena-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .arena-grid { grid-template-columns: 1fr; }
+    }
+    .arena-item {
+      padding: 16px 20px;
+      background: var(--bg-subtle);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 0.94rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .arena-item:hover {
+      background: var(--bg-card);
+      border-color: var(--teal-primary);
+      transform: translateY(-2px);
+    }
+    .arena-item.selected {
+      background: var(--teal-soft);
+      border-color: var(--teal-primary);
+      color: var(--teal-primary);
+      box-shadow: 0 4px 12px -2px rgba(15, 118, 110, 0.2);
+    }
+    .arena-item.matched {
+      background: var(--emerald-soft);
+      border-color: var(--emerald);
+      color: var(--emerald);
+      pointer-events: none;
+      border-style: solid;
+    }
+
+    /* Flashcard Sprint 3D */
+    .card-stage {
+      perspective: 1200px;
+      margin: 24px auto;
+      max-width: 620px;
+      height: 330px;
+    }
+    .card-flipper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      border-radius: var(--radius-xl);
+    }
+    .card-flipper.flipped {
+      transform: rotateY(180deg);
+    }
+    .card-pane {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius-xl);
+      padding: 34px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-card);
+    }
+    .pane-back {
+      transform: rotateY(180deg);
+      background: var(--bg-subtle);
+      border-color: var(--teal-primary);
+    }
+
+    /* Floating Voiceover Bar */
+    .voice-dock {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 92%;
+    }
+    .voice-btn {
+      background: linear-gradient(135deg, var(--teal-primary), var(--emerald));
+      color: #FFFFFF;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px -2px rgba(15, 118, 110, 0.4);
+    }
+    .voice-btn:hover { transform: scale(1.08); }
+    .voice-title { font-size: 0.88rem; font-weight: 800; color: var(--text-primary); line-height: 1.2; }
+    .voice-sub { font-size: 0.74rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY TOP EMERGENCY BAR -->
+  <header class="top-nav">
+    <div class="nav-inner">
+      <div class="brand-group">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h1>INL220 Sanctuary</h1>
+          <span>1-Hour 50% Pass Locker</span>
+        </div>
+      </div>
+
+      <div class="countdown-pill">
+        <span class="pulsing-dot"></span>
+        <span id="countdownLabel">CALCULATING DEADLINE...</span>
+      </div>
+
+      <div class="ctrl-group">
+        <button class="tool-btn" id="panicBtn" onclick="toggleEssentials()" title="Collapse all to 10-word gold sentences">
+          🌿 10-Word Panic Mode
+        </button>
+        <button class="tool-btn" id="clozeBtn" onclick="toggleCloze()" title="Hide keywords to test your active recall">
+          🎯 Active Recall
+        </button>
+        <button class="tool-btn" onclick="playHarmonicBowl()" title="Play 432Hz harmonic singing bowl chime">
+          🥣 432Hz
+        </button>
+        <button class="tool-btn" onclick="toggleDarkMode()" title="Toggle dark/light mode">
+          🌓
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO HUD WITH 50% MASTERY PROGRESS LEDGER -->
+    <section class="hero-hud">
+      <div>
+        <div style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; text-transform:uppercase; color:var(--teal-primary); margin-bottom:6px; letter-spacing:0.06em;">
+          Informatorium CBT/Labs • Saturday 24 Oct @ 10:00 (Arrive 09:30)
+        </div>
+        <h2 class="hud-title">Secure Your 50% in the Next 60 Minutes</h2>
+        <p class="hud-desc">
+          Dr Makhafola's paper is <strong>60 Marks, 90 Minutes</strong>. You do <em>not</em> need 100%. 
+          You need <strong>30/60</strong> to guarantee you clear the <strong>40% Theory Subminimum</strong> and lock down exam admission. 
+          Follow this surgical 4-step path.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <span style="background:var(--teal-soft); color:var(--teal-primary); font-weight:700; font-size:0.8rem; padding:5px 12px; border-radius:99px;">Matching: 8 Marks</span>
+          <span style="background:var(--indigo-soft); color:var(--indigo); font-weight:700; font-size:0.8rem; padding:5px 12px; border-radius:99px;">Definitions: 10 Marks</span>
+          <span style="background:var(--amber-soft); color:var(--amber); font-weight:700; font-size:0.8rem; padding:5px 12px; border-radius:99px;">SEO Essay: 12 Marks</span>
+          <span style="background:var(--rose-soft); color:var(--rose); font-weight:700; font-size:0.8rem; padding:5px 12px; border-radius:99px;">Validation: 6 Marks</span>
+        </div>
+      </div>
+
+      <!-- LIVE PROGRESS LEDGER -->
+      <div class="mastery-card">
+        <div class="mastery-header">
+          <span class="mastery-title">Exam Security Ledger</span>
+          <span class="mastery-score"><span id="masteryPoints">0</span> / 30 pts</span>
+        </div>
+        <div class="mastery-bar">
+          <div class="mastery-target-line" title="50% Target Threshold (15 pts)"></div>
+          <div class="mastery-fill" id="masteryFill"></div>
+        </div>
+        <div class="mastery-footnote">
+          <span>0 pts</span>
+          <span style="color:var(--rose); font-weight:800;">50% Threshold (30 M)</span>
+          <span>60 pts</span>
+        </div>
+        <div style="font-size:0.78rem; color:var(--text-secondary); line-height:1.4;">
+          Check off concepts as you review them below. Fill the bar past the red line to guarantee your pass before you enter the hall!
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB NAVIGATION -->
+    <nav class="tab-nav">
+      <button class="tab-link active" onclick="navigateTab(0)">⚡ 30-Mark Fast Path</button>
+      <button class="tab-link" onclick="navigateTab(1)">🧭 3 Core Pillars</button>
+      <button class="tab-link" onclick="navigateTab(2)">✍️ 12-Mark Essay Forge</button>
+      <button class="tab-link" onclick="navigateTab(3)">🎮 Interactive Arena</button>
+      <button class="tab-link" onclick="navigateTab(4)">⚡ Flashcard Sprint</button>
+    </nav>
+
+    <!-- ==================== TAB 0: 30-MARK FAST PATH ==================== -->
+    <section id="tab-0" class="tab-content active">
+      
+      <article class="cram-card">
+        <span class="card-badge badge-rose">Emergency Blueprint • 15 Minutes to Memorize</span>
+        <div class="cram-heading">
+          <span>The Exact 30-Mark Path to Pass the Paper</span>
+          <button class="check-btn" onclick="toggleMastery(this, 10)">✓</button>
+        </div>
+        
+        <p style="color:var(--text-secondary); margin-bottom:14px;">
+          Dr Makhafola confirmed in the revision lecture that the 60-mark paper has <strong>~30 marks in short questions/matching/definitions</strong> and <strong>~30 marks in essays</strong>. Here is where your 30 passing marks come from:
+        </p>
+
+        <table class="fast-table">
+          <thead>
+            <tr>
+              <th>Target Section</th>
+              <th>Guaranteed Questions</th>
+              <th>Expected Marks</th>
+              <th>Time to Complete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Matching Section</strong></td>
+              <td>RDA, XML, OWL, DCMI, Inverted Index, Foreign Key</td>
+              <td><strong>6 – 8 Marks</strong></td>
+              <td>6 mins</td>
+            </tr>
+            <tr>
+              <td><strong>2. Core Definitions</strong></td>
+              <td>Metadata, Database vs DBMS, SEO, RDA, Data Validation</td>
+              <td><strong>8 – 10 Marks</strong></td>
+              <td>10 mins</td>
+            </tr>
+            <tr>
+              <td><strong>3. SEO Implementation Essay</strong></td>
+              <td>On-Page, Technical, Off-Page, White-Hat vs Black-Hat</td>
+              <td><strong>10 – 12 Marks</strong></td>
+              <td>25 mins</td>
+            </tr>
+            <tr>
+              <td><strong>4. Database Validation Checks</strong></td>
+              <td>Type check, Range check, Presence check, Format check</td>
+              <td><strong>6 – 8 Marks</strong></td>
+              <td>12 mins</td>
+            </tr>
+            <tr style="background:var(--emerald-soft); font-weight:800; color:var(--emerald);">
+              <td><strong>TOTAL SECURED</strong></td>
+              <td><strong>Lockdown Minimum for Pass</strong></td>
+              <td><strong>30 – 38 / 60 MARKS</strong></td>
+              <td><strong>53 Minutes</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- FAST DEFINITIONS STRIP -->
+      <article class="cram-card">
+        <span class="card-badge badge-teal">Section 1 • The 5 Guaranteed Definitions (5-6 Marks)</span>
+        <div class="cram-heading">
+          <span>Write These Word-For-Word for Full Marks</span>
+          <button class="check-btn" onclick="toggleMastery(this, 6)">✓</button>
+        </div>
+
+        <div class="essential-strip" style="background:var(--bg-subtle); padding:14px; border-radius:10px; margin-bottom:12px;">
+          <strong>1. Metadata:</strong> <span class="cloze">Structured data about data</span> that describes, identifies, explains, locates, and facilitates the retrieval and management of an information resource in an online environment.
+        </div>
+        <div class="essential-strip" style="background:var(--bg-subtle); padding:14px; border-radius:10px; margin-bottom:12px;">
+          <strong>2. Search Engine Optimisation (SEO):</strong> A methodology of strategic techniques and tactics used to increase the volume and quality of traffic to a website by obtaining <span class="cloze">high organic (unpaid) ranking placement</span> in search engine results pages (SERPs).
+        </div>
+        <div class="essential-strip" style="background:var(--bg-subtle); padding:14px; border-radius:10px; margin-bottom:12px;">
+          <strong>3. Resource Description and Access (RDA):</strong> The modern <span class="cloze">content standard</span> for cataloguing and describing digital and web resources, replacing the card-catalogue Anglo-American Cataloguing Rules (AACR).
+        </div>
+        <div class="essential-strip" style="background:var(--bg-subtle); padding:14px; border-radius:10px; margin-bottom:12px;">
+          <strong>4. Data Validation:</strong> Automated checks executed by the system to ensure entered data is <span class="cloze">sensible, reasonable, accurate, and within required rules</span> before being accepted into the database.
+        </div>
+        <div class="essential-strip" style="background:var(--bg-subtle); padding:14px; border-radius:10px;">
+          <strong>5. Inverted Index:</strong> The foundational search engine database architecture that maps <span class="cloze">individual words/terms directly to the list of documents/webpages</span> containing them, enabling split-second query retrieval.
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 1: 3 CORE PILLARS ==================== -->
+    <section id="tab-1" class="tab-content">
+      
+      <!-- PILLAR 1: THEME 4 -->
+      <article class="cram-card">
+        <span class="card-badge badge-teal">Theme 4 • Metadata, Standards & Ontologies</span>
+        <div class="cram-heading">
+          <span>Pillar 1: Metadata Standards (RDA, XML, OWL, DCMI)</span>
+          <button class="check-btn" onclick="toggleMastery(this, 5)">✓</button>
+        </div>
+
+        <ul class="bullet-matrix">
+          <li>
+            <strong>The 3 Classes of Metadata (High-Yield):</strong>
+            <ul style="margin-left:20px; list-style:circle; margin-top:4px;">
+              <li><em>Descriptive:</em> Identifies content (Title, Author, Subject keywords, Abstract) for discovery.</li>
+              <li><em>Structural:</em> Details internal sequencing and assembly of compound objects (e.g. Chapter hierarchy in an e-book).</li>
+              <li><em>Administrative:</em> Manages resource: Technical (file format/size), Rights (copyright/licenses), and Preservation (archival integrity/checksums).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>RDA vs AACR (Cataloguing Revolution):</strong> AACR was created for physical card catalogues. RDA is a modern web content standard grounded in the FRBR (Functional Requirements for Bibliographic Records) model to describe digital assets.
+          </li>
+          <li>
+            <strong>XML (eXtensible Markup Language):</strong> Structural language using hierarchical user-defined tags (e.g. <code>&lt;book&gt;&lt;title&gt;...&lt;/title&gt;&lt;/book&gt;</code>). Machine and human readable. Requires strict opening/closing syntax.
+          </li>
+          <li>
+            <strong>OWL (Web Ontology Language):</strong> Semantic Web language built on RDF/XML that allows formal representation of domain ontologies and relationships so machines can deduce and reason new knowledge.
+          </li>
+          <li>
+            <strong>Dublin Core (DCMI):</strong> The 15 core elements: <span class="cloze">Title, Creator, Subject, Description, Publisher, Contributor, Date, Type, Format, Identifier, Source, Language, Relation, Coverage, Rights</span>. Simple DC (15 elements) vs Qualified DC (adds refinements).
+          </li>
+        </ul>
+      </article>
+
+      <!-- PILLAR 2: THEME 5 -->
+      <article class="cram-card">
+        <span class="card-badge badge-indigo">Theme 5 • Databases, Modeling & Data Validation</span>
+        <div class="cram-heading">
+          <span>Pillar 2: Databases, Schemas & Validation Checks</span>
+          <button class="check-btn" onclick="toggleMastery(this, 5)">✓</button>
+        </div>
+
+        <ul class="bullet-matrix">
+          <li>
+            <strong>Database vs DBMS:</strong> The database is the structured data itself. The DBMS is the management software suite (e.g. MySQL, Oracle, PostgreSQL) that creates, queries, and secures the data.
+          </li>
+          <li>
+            <strong>Relational vs Non-Relational (NoSQL):</strong>
+            <ul style="margin-left:20px; list-style:circle; margin-top:4px;">
+              <li><em>Relational (RDBMS):</em> Rigid tabular schemas, SQL, ACID compliance (Atomicity, Consistency, Isolation, Durability). Best for financial banking and student grades.</li>
+              <li><em>NoSQL (Document/Key-Value):</em> Flexible JSON documents, dynamic schemas, horizontal scaling. Best for real-time social media (Facebook, Instagram feeds).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>The 4 Essential Data Validation Checks (Must memorize these examples!):</strong>
+            <ul style="margin-left:20px; list-style:circle; margin-top:4px;">
+              <li><strong>Type Check:</strong> Ensures data matches the expected data type. (e.g. Age must be an integer <code>20</code>, rejecting text <code>"twenty"</code>).</li>
+              <li><strong>Range Check:</strong> Confirms numbers stay between limits. (e.g. Exam marks must be between <code>0.0</code> and <code>100.0</code>).</li>
+              <li><strong>Presence Check:</strong> Rejects blank inputs on mandatory fields. (e.g. Student Number or Email cannot be left NULL).</li>
+              <li><strong>Format Check:</strong> Validates text structure matches a template. (e.g. Email must contain <code>@up.ac.za</code>, or SA ID must be 13 digits).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Database Design Concepts:</strong>
+            <ul style="margin-left:20px; list-style:circle; margin-top:4px;">
+              <li><em>Primary Key (PK):</em> A unique identifier for every record in a table (e.g. <code>StudentID</code>).</li>
+              <li><em>Foreign Key (FK):</em> Links to a Primary Key in another table to establish relationships without data duplication.</li>
+              <li><em>Cardinality:</em> 1:1, 1:Many (1 Department $\rightarrow$ Many Students), Many:Many (Students $\rightarrow$ Modules, resolved with a junction table).</li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <!-- PILLAR 3: THEME 6 -->
+      <article class="cram-card">
+        <span class="card-badge badge-amber">Theme 6.1 & 6.2 • Search Engine Optimisation (SEO)</span>
+        <div class="cram-heading">
+          <span>Pillar 3: The 3-Step Search Engine Lifecycle</span>
+          <button class="check-btn" onclick="toggleMastery(this, 5)">✓</button>
+        </div>
+
+        <ul class="bullet-matrix">
+          <li>
+            <strong>The Search Engine 3-Step Triad:</strong>
+            <ol style="margin-left:20px; margin-top:6px;">
+              <li><em>1. Crawling:</em> Automated bots (Googlebot/spiders) systematically follow hyperlinks across the web to discover new and updated content.</li>
+              <li><em>2. Indexing:</em> Crawled pages are parsed, stripped of noise, and catalogued into the <strong>Inverted Index</strong> (a gigantic database connecting keywords to webpage URLs).</li>
+              <li><em>3. Ranking / Retrieval:</em> When a query is made, algorithms score documents against ranking factors (relevance, backlinks, domain authority, page speed, search intent) to output the ranked SERP.</li>
+            </ol>
+          </li>
+          <li>
+            <strong>White-Hat vs Black-Hat SEO:</strong>
+            <ul style="margin-left:20px; list-style:circle; margin-top:4px;">
+              <li><em>White-Hat (Ethical):</em> Follows search engine guidelines. Focuses on user satisfaction, high-quality content, clean mobile speed, and legitimate organic backlinks.</li>
+              <li><em>Black-Hat (Manipulative):</em> Attempts to game algorithms using keyword stuffing, hidden white text on white backgrounds, cloaking, and private link networks. Results in severe ranking penalties or complete removal from Google.</li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 2: 12-MARK ESSAY FORGE ==================== -->
+    <section id="tab-2" class="tab-content">
+      
+      <!-- ESSAY 1 -->
+      <article class="cram-card">
+        <span class="card-badge badge-amber">The Big 12-Mark Essay • Guaranteed Question</span>
+        <div class="cram-heading">
+          <span>Model Essay: How to Implement SEO on a Website (12 Marks)</span>
+          <button class="check-btn" onclick="toggleMastery(this, 8)">✓</button>
+        </div>
+
+        <p style="color:var(--text-secondary); margin-bottom:12px; font-size:0.92rem;">
+          Dr Makhafola explicitly stressed: <em>"If it says Discuss, do not merely list bullet points; give enough correct facts and add examples."</em> Memorize this 4-paragraph structure:
+        </p>
+
+        <div class="model-essay-box" id="seoEssayText">
+          <div class="model-essay-para">
+            <span class="para-tag">Paragraph 1 — Definition & Inbound Marketing Objective</span>
+            Search Engine Optimisation (SEO) refers to the strategic methodology of techniques and best practices used to maximize the visibility and quality of organic (unpaid) traffic to a website by achieving high rankings on search engine results pages (SERPs). The ultimate objective is to transition from traditional outbound marketing to modern inbound marketing, ensuring that search engines like Google match the website’s content to users actively searching for relevant information.
+          </div>
+
+          <div class="model-essay-para">
+            <span class="para-tag">Paragraph 2 — On-Page SEO Implementation</span>
+            On-page SEO requires direct optimization of website content and underlying HTML structure. First, comprehensive keyword research must be conducted to integrate target search terms naturally into high-quality original content. Every page must feature a distinct <code>&lt;title&gt;</code> tag (under 60 characters) containing the primary keyword, and a persuasive meta description (under 160 characters) to maximize click-through rates. Furthermore, semantic heading hierarchy must be enforced—featuring a single <code>&lt;h1&gt;</code> for the primary subject, followed by logical <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> subheadings—along with descriptive <code>alt</code> text on all images to enable indexing in image search and improve accessibility.
+          </div>
+
+          <div class="model-essay-para">
+            <span class="para-tag">Paragraph 3 — Technical & Off-Page SEO Implementation</span>
+            Technical SEO ensures search engine crawlers can efficiently crawl and index the platform. This involves maintaining fast page load speeds (optimizing image assets and caching), enforcing responsive mobile-first design, providing secure SSL encryption (HTTPS), and generating clean, human-readable URL paths (e.g., <code>/seo-guide</code> instead of dynamic IDs). An XML sitemap must be submitted to search consoles, coupled with a properly configured <code>robots.txt</code> file. Off-page SEO complements this by securing authoritative backlinks from trusted external websites, which act as digital "votes of confidence" that build domain authority.
+          </div>
+
+          <div class="model-essay-para">
+            <span class="para-tag">Paragraph 4 — Ethical Standards (White-Hat vs Black-Hat)</span>
+            Finally, implementation must strictly adhere to White-Hat standards—prioritizing genuine user experience, informational accuracy, and search engine compliance. Manipulative Black-Hat practices—such as keyword stuffing (repeating keywords unnaturally), cloaking, or purchasing links from private blog networks—must be avoided, as modern algorithmic updates automatically penalize or completely de-index offending sites from the web.
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="tool-btn" onclick="copyText('seoEssayText')">📋 Copy Full Essay</button>
+          <button class="tool-btn" onclick="readAloudEssay('seoEssayText')">🎙️ Listen Aloud (Headphones)</button>
+        </div>
+      </article>
+
+      <!-- ESSAY 2 -->
+      <article class="cram-card">
+        <span class="card-badge badge-indigo">10-Mark Comparative Question</span>
+        <div class="cram-heading">
+          <span>Model Essay: Relational vs NoSQL Databases & Data Validation (10 Marks)</span>
+          <button class="check-btn" onclick="toggleMastery(this, 6)">✓</button>
+        </div>
+
+        <div class="model-essay-box" id="dbEssayText">
+          <div class="model-essay-para">
+            <span class="para-tag">Paragraph 1 — Architectural Comparison (RDBMS vs NoSQL)</span>
+            Relational databases (RDBMS) organize data into structured, two-dimensional tables comprised of rows (records) and columns (attributes), governed by strict schemas and foreign-key constraints (e.g., MySQL, Oracle, PostgreSQL). They strictly adhere to ACID properties (Atomicity, Consistency, Isolation, Durability), making them ideal for mission-critical applications where transactional consistency is non-negotiable, such as university student registration and banking. In contrast, Non-Relational (NoSQL) databases store semi-structured data as flexible JSON documents, key-value pairs, or graph nodes (e.g., MongoDB, Cassandra). They prioritize horizontal scalability and dynamic schemas, making them ideal for high-velocity social media platforms (like Facebook or Instagram) where eventual consistency is acceptable.
+          </div>
+
+          <div class="model-essay-para">
+            <span class="para-tag">Paragraph 2 — Data Validation & Practical Examples</span>
+            Data validation is critical in database management to preserve data integrity and prevent corrupted, erroneous inputs from entering the system. The four core validation checks include: (1) <strong>Type Check</strong>, which ensures input matches the expected data format (e.g., an Age field accepting integer <code>21</code> while rejecting string <code>"twenty"</code>); (2) <strong>Range Check</strong>, which ensures numeric values fall within legal boundaries (e.g., student marks constrained between <code>0.0</code> and <code>100.0</code>); (3) <strong>Presence Check</strong>, which prevents critical mandatory fields (such as Student Number or Email) from being submitted blank; and (4) <strong>Format Check</strong>, which validates conformity to a prescribed pattern (e.g., ensuring a university email adheres to <code>@tuks.co.za</code> syntax, or a South African national ID consists of exactly 13 numeric digits).
+          </div>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="tool-btn" onclick="copyText('dbEssayText')">📋 Copy Essay</button>
+          <button class="tool-btn" onclick="readAloudEssay('dbEssayText')">🎙️ Listen Aloud</button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 3: INTERACTIVE ARENA ==================== -->
+    <section id="tab-3" class="tab-content">
+      
+      <article class="cram-card">
+        <span class="card-badge badge-teal">Interactive Test Simulator • 6 Marks</span>
+        <div class="cram-heading">
+          <span>Matching Arena: Tap Concept $\rightarrow$ Tap Description</span>
+          <span style="font-size:1rem; font-weight:800; color:var(--teal-primary);">Score: <span id="arenaScore">0</span> / 6</span>
+        </div>
+
+        <p style="color:var(--text-secondary); margin-bottom:14px; font-size:0.92rem;">
+          Drill this interactive game right now. Tap a concept on the left, then tap its exact definition on the right. Guaranteed matching marks!
+        </p>
+
+        <div class="arena-grid">
+          <div id="arenaColLeft" style="display:flex; flex-direction:column; gap:10px;"></div>
+          <div id="arenaColRight" style="display:flex; flex-direction:column; gap:10px;"></div>
+        </div>
+
+        <div style="margin-top:16px; display:flex; justify-content:flex-end;">
+          <button class="tool-btn" onclick="resetArena()">🔄 Shuffle & Restart Arena</button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 4: FLASHCARD SPRINT ==================== -->
+    <section id="tab-4" class="tab-content">
+      
+      <div style="text-align:center; margin-bottom:14px;">
+        <span class="card-badge badge-purple">Final 20 Minutes • Rapid Memory Sprint</span>
+        <h2 style="font-family:var(--font-serif); font-size:1.6rem; color:var(--text-primary); margin-top:4px;">
+          High-Yield Flashcard Deck
+        </h2>
+        <div style="font-weight:800; color:var(--teal-primary); font-size:0.9rem; margin-top:4px;">
+          Card <span id="cardCounter">1</span> of <span id="cardTotal">8</span>
+        </div>
+      </div>
+
+      <div class="card-stage" onclick="flipActiveCard()">
+        <div class="card-flipper" id="cardFlipper">
+          <div class="card-pane pane-front">
+            <span class="card-badge badge-teal" id="cardTag">THEME 4 • METADATA</span>
+            <h3 id="cardQuestion" style="font-family:var(--font-serif); font-size:1.5rem; text-align:center; margin:auto 0; line-height:1.3;"></h3>
+            <span style="font-size:0.75rem; color:var(--text-muted); text-align:center; font-weight:700;">TAP ANYWHERE TO FLIP ↩</span>
+          </div>
+          <div class="card-pane pane-back">
+            <span class="card-badge badge-indigo">MARKING KEYWORDS</span>
+            <p id="cardAnswer" style="font-size:1.05rem; color:var(--text-primary); text-align:center; margin:auto 0; line-height:1.6; white-space:pre-line;"></p>
+            <span style="font-size:0.75rem; color:var(--teal-primary); text-align:center; font-weight:800;">TAP TO FLIP BACK</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:12px; margin-top:20px;">
+        <button class="tool-btn" onclick="prevCardStep()">← Previous Card</button>
+        <button class="tool-btn" onclick="nextCardStep()">Next Card →</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FLOATING AUDIO BROADCAST DOCK -->
+  <aside class="voice-dock">
+    <button class="voice-btn" id="voiceToggleBtn" onclick="toggleBroadcast()" title="Play / Pause High-Yield Voiceover">
+      ▶
+    </button>
+    <div>
+      <div class="voice-title" id="broadcastTitle">INL220 Radio Cram Broadcast</div>
+      <div class="voice-sub" id="broadcastSub">Listen with headphones on your way to the Informatorium</div>
+    </div>
+  </aside>
+
+  <script>
+    // Audio Synthesizer (Harmonic frequencies)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playHarmonicBowl(freq = 432) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.6);
+    }
+
+    // Countdown Timer (10:00 AM)
+    function runTimer() {
+      const target = new Date();
+      target.setHours(10, 0, 0, 0);
+      const now = new Date();
+      let diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdownLabel').textContent = "VENUE OPEN • TEST IN PROGRESS";
+        return;
+      }
+      const mins = Math.floor(diff / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      document.getElementById('countdownLabel').textContent = `${mins}m ${secs}s TO TEST START`;
+    }
+    setInterval(runTimer, 1000);
+    runTimer();
+
+    // Mastery Progress Ledger
+    let currentMastery = 0;
+    function toggleMastery(btn, pts) {
+      btn.classList.toggle('checked');
+      if (btn.classList.contains('checked')) {
+        currentMastery = Math.min(30, currentMastery + pts);
+        playHarmonicBowl(648);
+      } else {
+        currentMastery = Math.max(0, currentMastery - pts);
+        playHarmonicBowl(320);
+      }
+      document.getElementById('masteryPoints').textContent = currentMastery;
+      document.getElementById('masteryFill').style.width = `${(currentMastery / 30) * 100}%`;
+    }
+
+    // Navigation Tabs
+    function navigateTab(idx) {
+      document.querySelectorAll('.tab-link').forEach((b, i) => b.classList.toggle('active', i === idx));
+      document.querySelectorAll('.tab-content').forEach((p, i) => p.classList.toggle('active', i === idx));
+      playHarmonicBowl(528 + idx * 50);
+    }
+
+    // Toggles: Panic / Essentials & Cloze Recall
+    function toggleEssentials() {
+      document.body.classList.toggle('essentials-mode');
+      document.getElementById('panicBtn').classList.toggle('active');
+      playHarmonicBowl(432);
+    }
+
+    function toggleCloze() {
+      document.body.classList.toggle('cloze-mode');
+      document.getElementById('clozeBtn').classList.toggle('active');
+      playHarmonicBowl(576);
+    }
+
+    document.querySelectorAll('.cloze').forEach(el => {
+      el.addEventListener('click', () => {
+        el.classList.toggle('revealed');
+        playHarmonicBowl(864);
+      });
+    });
+
+    function toggleDarkMode() {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const nxt = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nxt);
+      playHarmonicBowl(384);
+    }
+
+    // Interactive Matching Arena Data
+    const arenaPairs = [
+      { id: 1, term: "RDA (Resource Description & Access)", text: "Modern online cataloguing content standard that replaced paper-based AACR" },
+      { id: 2, term: "XML (eXtensible Markup Language)", text: "Structural markup language using hierarchical custom tags and strict tree syntax" },
+      { id: 3, term: "OWL (Web Ontology Language)", text: "Semantic Web language used to model complex ontologies for machine reasoning" },
+      { id: 4, term: "Inverted Index", text: "Core search engine database structure mapping keywords directly to document URLs" },
+      { id: 5, term: "Data Validation", text: "Automated checks (type, range, presence, format) ensuring input data accuracy" },
+      { id: 6, term: "Foreign Key", text: "Attribute in a relational table linking to the Primary Key of another table" }
+    ];
+
+    let chosenTerm = null;
+    let chosenText = null;
+    let arenaScore = 0;
+
+    function resetArena() {
+      arenaScore = 0;
+      document.getElementById('arenaScore').textContent = '0';
+      chosenTerm = null;
+      chosenText = null;
+
+      const terms = [...arenaPairs].sort(() => Math.random() - 0.5);
+      const texts = [...arenaPairs].sort(() => Math.random() - 0.5);
+
+      const colL = document.getElementById('arenaColLeft');
+      const colR = document.getElementById('arenaColRight');
+      colL.innerHTML = '';
+      colR.innerHTML = '';
+
+      terms.forEach(t => {
+        const d = document.createElement('div');
+        d.className = 'arena-item';
+        d.textContent = t.term;
+        d.onclick = () => selectArenaTerm(d, t.id);
+        colL.appendChild(d);
+      });
+
+      texts.forEach(x => {
+        const d = document.createElement('div');
+        d.className = 'arena-item';
+        d.textContent = x.text;
+        d.onclick = () => selectArenaText(d, x.id);
+        colR.appendChild(d);
+      });
+    }
+
+    function selectArenaTerm(el, id) {
+      playHarmonicBowl(450);
+      document.querySelectorAll('#arenaColLeft .arena-item').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      chosenTerm = { el, id };
+      evaluateArenaPair();
+    }
+
+    function selectArenaText(el, id) {
+      playHarmonicBowl(520);
+      document.querySelectorAll('#arenaColRight .arena-item').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      chosenText = { el, id };
+      evaluateArenaPair();
+    }
+
+    function evaluateArenaPair() {
+      if (chosenTerm && chosenText) {
+        if (chosenTerm.id === chosenText.id) {
+          playHarmonicBowl(864);
+          chosenTerm.el.classList.add('matched');
+          chosenText.el.classList.add('matched');
+          arenaScore++;
+          document.getElementById('arenaScore').textContent = arenaScore;
+        } else {
+          playHarmonicBowl(216);
+          chosenTerm.el.classList.remove('selected');
+          chosenText.el.classList.remove('selected');
+        }
+        chosenTerm = null;
+        chosenText = null;
+      }
+    }
+    resetArena();
+
+    // Flashcard Deck
+    const flashDeck = [
+      { tag: "THEME 4 • METADATA", q: "What are the 3 primary types of metadata?", a: "1. Descriptive (title, author, subject keywords for discovery)\n2. Structural (chapter/page order of compound objects)\n3. Administrative (technical specs, rights management, preservation)" },
+      { tag: "THEME 4 • STANDARDS", q: "Why was AACR replaced by RDA?", a: "AACR (Anglo-American Cataloguing Rules) was designed for physical card catalogues.\nRDA is a web-native content standard built on the FRBR entity-relationship model for digital/networked resources." },
+      { tag: "THEME 4 • SCHEMAS", q: "How many core elements in Dublin Core (DCMI)?", a: "15 Core Elements:\nTitle, Creator, Subject, Description, Publisher, Contributor, Date, Type, Format, Identifier, Source, Language, Relation, Coverage, Rights." },
+      { tag: "THEME 5 • DATABASES", q: "What is the core difference between Relational (RDBMS) and NoSQL?", a: "Relational: Rigid tables, fixed schema, SQL, ACID consistency (e.g. banking transactions, student marks).\nNoSQL: Flexible JSON documents, dynamic schema, horizontal scalability, eventual consistency (e.g. Facebook feeds)." },
+      { tag: "THEME 5 • VALIDATION", q: "Name 4 Data Validation checks with practical test examples.", a: "1. Type Check: Age must be number, not text.\n2. Range Check: Mark must be between 0 and 100.\n3. Presence Check: Student ID cannot be left blank (NULL).\n4. Format Check: Email must match @tuks.co.za." },
+      { tag: "THEME 6 • SEO TRIAD", q: "What are the 3 foundational stages of search engine mechanics?", a: "1. Crawling: Spiders (Googlebot) follow hyperlinks across the web.\n2. Indexing: Content is parsed into an Inverted Index database.\n3. Ranking / Retrieval: Algorithms evaluate relevance, authority, and user intent to display ranked SERP links." },
+      { tag: "THEME 6 • ON-PAGE", q: "Name 5 essential On-Page SEO elements.", a: "1. Keyword-optimized Title tag (< 60 chars)\n2. Compelling Meta Description (< 160 chars)\n3. Single H1 heading hierarchy\n4. Image Alt text\n5. Clean, human-readable URL structure" },
+      { tag: "THEME 6 • ETHICS", q: "What differentiates White-Hat from Black-Hat SEO?", a: "White-Hat: Follows search engine guidelines to provide genuine human user value.\nBlack-Hat: Manipulative tricks (keyword stuffing, invisible text, link farms) causing algorithmic penalties or de-indexing." }
+    ];
+
+    let cardIdx = 0;
+    function renderCard(idx) {
+      const c = flashDeck[idx];
+      document.getElementById('cardTag').textContent = c.tag;
+      document.getElementById('cardQuestion').textContent = c.q;
+      document.getElementById('cardAnswer').textContent = c.a;
+      document.getElementById('cardCounter').textContent = idx + 1;
+      document.getElementById('cardTotal').textContent = flashDeck.length;
+      document.getElementById('cardFlipper').classList.remove('flipped');
+    }
+    function flipActiveCard() {
+      playHarmonicBowl(600);
+      document.getElementById('cardFlipper').classList.toggle('flipped');
+    }
+    function nextCardStep() {
+      cardIdx = (cardIdx + 1) % flashDeck.length;
+      renderCard(cardIdx);
+      playHarmonicBowl(520);
+    }
+    function prevCardStep() {
+      cardIdx = (cardIdx - 1 + flashDeck.length) % flashDeck.length;
+      renderCard(cardIdx);
+      playHarmonicBowl(480);
+    }
+    renderCard(0);
+
+    // Copy Essay
+    function copyText(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.innerText);
+      playHarmonicBowl(700);
+      alert('Model essay copied to clipboard! Paste into your notes or review on mobile.');
+    }
+
+    // Voiceover (Web Speech API)
+    let isBroadcasting = false;
+    function toggleBroadcast() {
+      if (!('speechSynthesis' in window)) {
+        alert('Speech synthesis is not supported on this device.');
+        return;
+      }
+      if (isBroadcasting) {
+        window.speechSynthesis.cancel();
+        isBroadcasting = false;
+        document.getElementById('voiceToggleBtn').textContent = '▶';
+        document.getElementById('broadcastSub').textContent = 'Broadcast paused';
+      } else {
+        const script = `This is your 1-hour emergency master broadcast for INL 220 Semester Test 2.
+        First, Theme 4 Metadata. Metadata is structured data about data used to identify and retrieve resources. Descriptive metadata identifies content like title and author. Structural metadata details object assembly like chapters in an e-book. Administrative metadata handles technical specifications, copyright licenses, and digital preservation. Remember that RDA is the modern online cataloguing standard that replaced AACR, which was built for paper card catalogues. XML stores data in hierarchical custom tags. OWL defines formal ontologies for machine reasoning. Dublin Core has 15 core elements.
+        Second, Theme 5 Databases. Relational databases store data in tables with rows and columns, enforcing strict schemas and ACID consistency, perfect for banking and student grades. Non-relational databases store flexible JSON documents and scale horizontally, ideal for social media feeds like Facebook. Data validation ensures data integrity through four checks: Type check ensures correct data format like integer age. Range check ensures numbers are between limits like marks from zero to 100. Presence check ensures mandatory fields like student numbers cannot be left blank. Format check ensures syntax compliance like tuks email addresses.
+        Third, Theme 6 Search Engine Optimisation. Search engines follow a three-stage lifecycle: crawling with automated bots, indexing content into an inverted index, and ranking pages with retrieval algorithms. To implement SEO, execute on-page title tags, meta descriptions, semantic H1 headings, and image alt text. Technically, ensure fast load speed, mobile responsiveness, HTTPS encryption, and clean URLs. Off-page, acquire authoritative backlinks. Always follow ethical white-hat practices and avoid black-hat keyword stuffing.
+        Arrive at the Informatorium by 9:30 AM. Write in structured paragraphs. You are ready to score over 50 percent!`;
+
+        const u = new SpeechSynthesisUtterance(script);
+        u.rate = 1.05;
+        u.pitch = 1.0;
+        u.onend = () => {
+          isBroadcasting = false;
+          document.getElementById('voiceToggleBtn').textContent = '▶';
+          document.getElementById('broadcastSub').textContent = 'Broadcast finished. Go ace your test!';
+        };
+        window.speechSynthesis.speak(u);
+        isBroadcasting = true;
+        document.getElementById('voiceToggleBtn').textContent = '❚❚';
+        document.getElementById('broadcastSub').textContent = 'Broadcasting high-yield summary...';
+      }
+    }
+
+    function readAloudEssay(id) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const text = document.getElementById(id).innerText;
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 1.05;
+      window.speechSynthesis.speak(u);
+      document.getElementById('voiceToggleBtn').textContent = '❚❚';
+      document.getElementById('broadcastSub').textContent = 'Reading essay aloud...';
+      u.onend = () => {
+        document.getElementById('voiceToggleBtn').textContent = '▶';
+        document.getElementById('broadcastSub').textContent = 'Essay read complete.';
+      };
+    }
+  </script>
+</body>
+</html>
