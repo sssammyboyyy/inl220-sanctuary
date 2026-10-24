@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>INL220 — 8-Page French Style Master Cheat Sheet (Complete Exam Aid)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F8FAF9;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #EEF3F1;
+      --text-primary: #0F1715;
+      --text-secondary: #394641;
+      --text-muted: #6B7A74;
+      
+      --teal-primary: #0F766E;
+      --teal-vibrant: #0D9488;
+      --teal-soft: rgba(15, 118, 110, 0.10);
+      --emerald: #059669;
+      --emerald-soft: rgba(5, 150, 105, 0.10);
+      --indigo: #4338CA;
+      --indigo-soft: rgba(67, 56, 202, 0.10);
+      --amber: #D97706;
+      --amber-soft: rgba(217, 119, 6, 0.12);
+      --rose: #E11D48;
+      --rose-soft: rgba(225, 29, 72, 0.10);
+
+      --border: rgba(15, 23, 21, 0.12);
+      --shadow-sm: 0 4px 14px -2px rgba(15, 118, 110, 0.08);
+      --shadow-md: 0 12px 30px -4px rgba(15, 23, 21, 0.10);
+      --shadow-lg: 0 24px 50px -8px rgba(15, 23, 21, 0.14);
+
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+      --radius-pill: 9999px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0B0F0E;
+      --bg-card: #141A18;
+      --bg-subtle: #1C2421;
+      --text-primary: #F2F6F4;
+      --text-secondary: #A9B8B2;
+      --text-muted: #6A7C75;
+
+      --teal-primary: #14B8A6;
+      --teal-vibrant: #2DD4BF;
+      --teal-soft: rgba(20, 184, 166, 0.18);
+      --emerald: #34D399;
+      --emerald-soft: rgba(52, 211, 153, 0.18);
+      --indigo: #818CF8;
+      --indigo-soft: rgba(129, 140, 248, 0.18);
+      --amber: #FBBF24;
+      --amber-soft: rgba(251, 191, 36, 0.18);
+      --rose: #FB7185;
+      --rose-soft: rgba(251, 113, 133, 0.18);
+
+      --border: rgba(242, 246, 244, 0.10);
+      --shadow-sm: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 24px 50px -8px rgba(0, 0, 0, 0.8);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 90px;
+      overflow-x: hidden;
+      padding-top: max(10px, env(safe-area-inset-top));
+    }
+
+    /* Top Navigation Toolbar */
+    .top-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 10px 16px;
+    }
+    .toolbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, var(--teal-primary), var(--emerald));
+      color: #FFF;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+    }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .tool-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tool-group::-webkit-scrollbar { display: none; }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      min-height: 36px;
+    }
+    .btn:hover {
+      border-color: var(--teal-primary);
+      color: var(--teal-primary);
+    }
+    .btn.active {
+      background: var(--teal-primary);
+      color: #FFF;
+      border-color: var(--teal-primary);
+    }
+    .btn-accent {
+      background: var(--rose-soft);
+      color: var(--rose);
+      border-color: rgba(225, 29, 72, 0.3);
+    }
+
+    /* Search Filter Input */
+    .search-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      width: 170px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .search-box:focus {
+      border-color: var(--teal-primary);
+      width: 210px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Mode Switcher Tabs */
+    .view-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 5px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .view-tab {
+      flex: 1;
+      min-width: 140px;
+      padding: 8px 14px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .view-tab.active {
+      background: var(--bg-card);
+      color: var(--teal-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* French Fold Explanation Header */
+    .french-fold-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+    .fold-diagram-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .fold-svg {
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--teal-primary);
+      border-radius: 4px;
+      position: relative;
+      background: var(--teal-soft);
+    }
+    .fold-svg::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      border-left: 1.5px dashed var(--teal-primary);
+    }
+    .fold-svg::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1.5px dashed var(--teal-primary);
+    }
+
+    /* Page Navigation Bar for Booklet Mode */
+    .page-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+      background: var(--bg-card);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .page-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--teal-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-pills {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+    .page-pill-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+    }
+    .page-pill-btn.active {
+      background: var(--teal-primary);
+      color: #FFF;
+      border-color: var(--teal-primary);
+    }
+
+    /* THE 8 PAGES - CARD STYLING */
+    .booklet-page {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: pageIn 0.25s ease-out;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Page Header */
+    .page-header {
+      border-bottom: 2px solid var(--teal-soft);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .page-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--teal-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-primary);
+    }
+    .page-num-badge {
+      background: var(--bg-subtle);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      color: var(--teal-primary);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* Sectional Blocks inside Pages */
+    .content-block {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--teal-primary);
+    }
+    .content-block.indigo { border-left-color: var(--indigo); }
+    .content-block.amber { border-left-color: var(--amber); }
+    .content-block.rose { border-left-color: var(--rose); }
+    .content-block.emerald { border-left-color: var(--emerald); }
+
+    .block-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.04em;
+    }
+
+    .key-def {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .key-def:last-child { margin-bottom: 0; }
+
+    .buzzword {
+      background: var(--teal-soft);
+      color: var(--teal-primary);
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .pill-tag {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+
+    /* Comparison Mini-Tables */
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 8px;
+    }
+    .mini-table th, .mini-table td {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .mini-table th {
+      background: var(--bg-card);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Code / Example Snippet */
+    .code-chip {
+      background: #0D1311;
+      color: #34D399;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      margin: 2px 0;
+    }
+
+    /* 8-PANEL SHEET VIEW (French Fold Flat Layout) */
+    #sheetView {
+      display: none;
+    }
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 8px;
+      background: #1E2925;
+      padding: 12px;
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+    .sheet-panel {
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-size: 0.75rem;
+      min-height: 260px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+    }
+    .fold-line-vert {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      border-left: 2px dashed #34D399;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .fold-line-horiz {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-top: 2px dashed #34D399;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Bottom Fixed Audio / Fast Bar */
+    .cram-dock {
+      position: fixed;
+      bottom: max(12px, env(safe-area-inset-bottom));
+      left: 12px;
+      right: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-lg);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    /* Print Stylesheet for Physical Folding */
+    @media print {
+      body {
+        background: #FFF !important;
+        color: #000 !important;
+        padding: 0 !important;
+      }
+      .top-toolbar, .view-tabs, .french-fold-banner, .page-nav-bar, .cram-dock, .btn {
+        display: none !important;
+      }
+      #bookletView {
+        display: none !important;
+      }
+      #sheetView {
+        display: block !important;
+      }
+      .sheet-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+        gap: 2mm !important;
+        padding: 0 !important;
+        background: transparent !important;
+        width: 100% !important;
+        height: 100vh !important;
+      }
+      .sheet-panel {
+        border: 1px solid #CCC !important;
+        padding: 2mm !important;
+        font-size: 6.5pt !important;
+        line-height: 1.25 !important;
+        min-height: auto !important;
+        break-inside: avoid;
+      }
+      .page-title {
+        font-size: 8.5pt !important;
+      }
+      .block-title {
+        font-size: 6.5pt !important;
+      }
+      .code-chip {
+        background: #EEE !important;
+        color: #000 !important;
+        font-size: 6pt !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sheet-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+      }
+      .booklet-page {
+        padding: 16px 14px;
+        min-height: 520px;
+      }
+      .page-title {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP TOOLBAR -->
+  <header class="top-toolbar">
+    <div class="toolbar-inner">
+      <div class="brand">
+        <span class="brand-badge">INL 220</span>
+        <div>
+          <div class="brand-title">8-Page French Style Master Aid</div>
+          <div class="brand-sub">Surgical Exam Answers • Semester Test 2</div>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <a class="btn" href="index.html" style="text-decoration:none;" title="Return to INL220 Sanctuary Hub">⚡ Sanctuary Hub</a>
+        <input type="text" id="termSearch" class="search-box" placeholder="🔍 Find keyword..." oninput="filterKeywords()" />
+        <button class="btn btn-accent" onclick="window.print()">🖨️ Print Sheet</button>
+        <button class="btn" onclick="toggleDark()">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- VIEW MODE SWITCHER -->
+    <div class="view-tabs">
+      <button class="view-tab active" id="tabBooklet" onclick="switchView('booklet')">📖 8-Page Booklet Mode</button>
+      <button class="view-tab" id="tabSheet" onclick="switchView('sheet')">📐 French Fold Sheet (4x2 Grid)</button>
+    </div>
+
+    <!-- BANNER: FRENCH FOLD GEOMETRY -->
+    <div class="french-fold-banner">
+      <div class="fold-diagram-icon">
+        <div class="fold-svg" title="Fold horizontal, then fold vertical (Right-angle fold)"></div>
+        <div>
+          <strong style="font-size:0.88rem; display:block;">8-Page French Style Structure</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">
+            Printed on 1 sheet $\rightarrow$ Fold in half horizontally $\rightarrow$ Fold in half vertically $\rightarrow$ Creates an 8-page booklet.
+          </span>
+        </div>
+      </div>
+      <div style="font-family:var(--font-mono); font-size:0.78rem; font-weight:800; color:var(--teal-primary);">
+        60 MARKS • 90 MINS • INFORM 09:30
+      </div>
+    </div>
+
+    <!-- ==================== BOOKLET MODE ==================== -->
+    <div id="bookletView">
+
+      <!-- PAGE NAV BAR -->
+      <div class="page-nav-bar">
+        <button class="btn" onclick="turnPage(-1)">← Prev</button>
+        <div class="page-indicator">
+          PAGE <span id="curPageNum">1</span> OF 8
+        </div>
+        <div class="page-pills">
+          <button class="page-pill-btn active" onclick="gotoPage(1)">1</button>
+          <button class="page-pill-btn" onclick="gotoPage(2)">2</button>
+          <button class="page-pill-btn" onclick="gotoPage(3)">3</button>
+          <button class="page-pill-btn" onclick="gotoPage(4)">4</button>
+          <button class="page-pill-btn" onclick="gotoPage(5)">5</button>
+          <button class="page-pill-btn" onclick="gotoPage(6)">6</button>
+          <button class="page-pill-btn" onclick="gotoPage(7)">7</button>
+          <button class="page-pill-btn" onclick="gotoPage(8)">8</button>
+        </div>
+        <button class="btn" onclick="turnPage(1)">Next →</button>
+      </div>
+
+      <!-- PAGE 1: COVER & RAPID FORMULA KEY -->
+      <article class="booklet-page" id="page-1">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 1 • FRONT COVER</span>
+            <h1 class="page-title">Master Formula &amp; Pass Radar</h1>
+          </div>
+          <span class="page-num-badge">P. 1 / 8</span>
+        </div>
+
+        <div class="content-block rose">
+          <div class="block-title">
+            <span>🚨 EXAM LOCKDOWN TARGET</span>
+            <span>PASS: 30 / 60 MARKS</span>
+          </div>
+          <div class="key-def">
+            You need <strong>30/60 (50%)</strong> in today's paper to clear the UP EBIT <strong>40% Theory Subminimum</strong>. Practical is already secured at 54.4%. Scoring $\ge 30$ today completely secures your November exam admission.
+          </div>
+        </div>
+
+        <div class="content-block emerald">
+          <div class="block-title">⚡ THE 4 MNEMONIC PUNCH-FORMULAS</div>
+          <div class="key-def">
+            <strong>1. T-R-P-F (Validation):</strong> <span class="buzzword">Type</span>, <span class="buzzword">Range</span>, <span class="buzzword">Presence</span>, <span class="buzzword">Format</span>.<br>
+            <strong>2. D-S-A (Metadata):</strong> <span class="buzzword">Descriptive</span> (discovery), <span class="buzzword">Structural</span> (assembly), <span class="buzzword">Administrative</span> (tech/rights).<br>
+            <strong>3. C-I-R (Search Engines):</strong> <span class="buzzword">Crawling</span> (spiders) $\rightarrow$ <span class="buzzword">Indexing</span> (Inverted Index) $\rightarrow$ <span class="buzzword">Ranking</span> (SERP).<br>
+            <strong>4. A-C-I-D (RDBMS):</strong> <span class="buzzword">Atomicity</span>, <span class="buzzword">Consistency</span>, <span class="buzzword">Isolation</span>, <span class="buzzword">Durability</span>.
+          </div>
+        </div>
+
+        <div class="content-block indigo">
+          <div class="block-title">🧭 THE 8-PAGE FRENCH AID SITEMAP</div>
+          <div class="key-def" style="font-size:0.82rem; line-height:1.6;">
+            • <strong>P. 2:</strong> Theme 4 — Metadata, RDA vs AACR, XML, OWL, DCMI 15.<br>
+            • <strong>P. 3:</strong> Theme 5 — Relational vs NoSQL, ACID vs BASE, ERD Keys.<br>
+            • <strong>P. 4:</strong> Theme 5 — Data Validation (TRPF Checks + Code Examples).<br>
+            • <strong>P. 5:</strong> Theme 6.1 — Search Engine Mechanics &amp; Inverted Index.<br>
+            • <strong>P. 6:</strong> Theme 6.2 — On-Page &amp; Technical SEO Master Rubric.<br>
+            • <strong>P. 7:</strong> Theme 6.2 — Model 12-Mark SEO Implementation Essay.<br>
+            • <strong>P. 8:</strong> Back Cover — The 4 Examiner Pitfall Shields &amp; Matching Key.
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 2: THEME 4 METADATA & STANDARDS -->
+      <article class="booklet-page" id="page-2" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 2 • THEME 4</span>
+            <h2 class="page-title">Metadata, Standards &amp; Ontologies</h2>
+          </div>
+          <span class="page-num-badge">P. 2 / 8</span>
+        </div>
+
+        <div class="content-block">
+          <div class="block-title">DEFINITIONS &amp; 3 CLASSES OF METADATA</div>
+          <div class="key-def">
+            <strong>Metadata Definition:</strong> Structured data about data that describes, identifies, explains, locates, and facilitates the retrieval and management of an information resource.
+          </div>
+          <div class="key-def" style="font-size:0.84rem;">
+            • <strong>Descriptive:</strong> Identifies content for discovery (Title, Author, Subject keywords, Abstract).<br>
+            • <strong>Structural:</strong> Describes internal sequencing &amp; compound object assembly (Chapter hierarchy in an e-book, page order of scanned manuscript).<br>
+            • <strong>Administrative:</strong> Manages the resource over time. Sub-types:<br>
+            &nbsp;&nbsp;1. <em>Technical:</em> File format, file size, compression, camera specs.<br>
+            &nbsp;&nbsp;2. <em>Rights:</em> Copyright ownership, licensing, usage permissions.<br>
+            &nbsp;&nbsp;3. <em>Preservation:</em> Archival integrity, SHA-256 checksums, migration history.
+          </div>
+        </div>
+
+        <div class="content-block indigo">
+          <div class="block-title">RDA VS AACR (CATALOGUING REVOLUTION)</div>
+          <div class="key-def">
+            <strong>AACR (Anglo-American Cataloguing Rules):</strong> Legacy rules designed for physical 3x5-inch library card catalogues.<br>
+            <strong>RDA (Resource Description and Access):</strong> Modern web-native <span class="buzzword">content standard</span> built on the <strong>FRBR</strong> (Functional Requirements for Bibliographic Records) entity-relationship model (<span class="buzzword">Work, Expression, Manifestation, Item</span>). Designed for digital networked resources.
+          </div>
+        </div>
+
+        <div class="content-block amber">
+          <div class="block-title">XML, OWL &amp; DUBLIN CORE (DCMI)</div>
+          <div class="key-def" style="font-size:0.84rem;">
+            • <strong>XML (eXtensible Markup Language):</strong> Structural text markup using hierarchical user-defined tags (<span class="code-chip">&lt;book&gt;&lt;title&gt;...&lt;/title&gt;&lt;/book&gt;</span>). Machine/human readable.<br>
+            • <strong>OWL (Web Ontology Language):</strong> Semantic Web language built on RDF/XML to formally define domain ontologies, classes, properties, and relationships for machine reasoning.<br>
+            • <strong>Dublin Core (15 Core Elements):</strong> <span class="buzzword">Title, Creator, Subject, Description, Publisher, Contributor, Date, Type, Format, Identifier, Source, Language, Relation, Coverage, Rights</span>. Simple DC (15 strings) vs Qualified DC (adds qualifiers &amp; vocabularies).
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 3: THEME 5 DATABASES & RDBMS VS NOSQL -->
+      <article class="booklet-page" id="page-3" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 3 • THEME 5</span>
+            <h2 class="page-title">Databases &amp; Architectural Modeling</h2>
+          </div>
+          <span class="page-num-badge">P. 3 / 8</span>
+        </div>
+
+        <div class="content-block">
+          <div class="block-title">DATABASE VS DBMS &amp; RELATIONAL KEYS</div>
+          <div class="key-def">
+            • <strong>Database:</strong> An organized collection of logically related structured data.<br>
+            • <strong>DBMS:</strong> The software suite (e.g. MySQL, PostgreSQL, Oracle) used to create, query, administer, and secure the database.<br>
+            • <strong>Primary Key (PK):</strong> Unique attribute identifying every record (e.g. <span class="code-chip">StudentID</span>).<br>
+            • <strong>Foreign Key (FK):</strong> An attribute matching the Primary Key in another table to enforce <span class="buzzword">Referential Integrity</span> without data duplication.
+          </div>
+        </div>
+
+        <div class="content-block emerald">
+          <div class="block-title">ACID TRANSACTION PROPERTIES (EXACT EXAMPLES)</div>
+          <div class="key-def" style="font-size:0.84rem;">
+            • <strong>Atomicity:</strong> "All or nothing" — if any sub-operation fails, the entire transaction rolls back (e.g. bank transfer: funds deducted from Account A must reach Account B; if power fails halfway, funds revert).<br>
+            • <strong>Consistency:</strong> Database must transition from one valid state to another, obeying all integrity constraints and schema rules.<br>
+            • <strong>Isolation:</strong> Concurrent transactions execute independently without data corruption.<br>
+            • <strong>Durability:</strong> Once committed, transaction results are permanently saved in non-volatile storage, surviving system crashes.
+          </div>
+        </div>
+
+        <div class="content-block indigo">
+          <div class="block-title">RDBMS VS NOSQL COMPARISON MATRIX</div>
+          <table class="mini-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Relational (RDBMS)</th>
+                <th>NoSQL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Data Model</strong></td>
+                <td>Structured 2D tables (rows/cols)</td>
+                <td>Flexible JSON docs, key-value, graph</td>
+              </tr>
+              <tr>
+                <td><strong>Schema</strong></td>
+                <td>Rigid, fixed predefined schema</td>
+                <td>Dynamic, flexible, schema-less</td>
+              </tr>
+              <tr>
+                <td><strong>Scaling</strong></td>
+                <td>Vertical (bigger server)</td>
+                <td>Horizontal (sharding across clusters)</td>
+              </tr>
+              <tr>
+                <td><strong>Consistency</strong></td>
+                <td>ACID (Strict consistency)</td>
+                <td>BASE (Eventual consistency)</td>
+              </tr>
+              <tr>
+                <td><strong>Use Cases</strong></td>
+                <td>Banking, Student marks, ERP</td>
+                <td>Facebook feeds, Clickstreams, Big Data</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- PAGE 4: THEME 5 DATA VALIDATION -->
+      <article class="booklet-page" id="page-4" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 4 • THEME 5</span>
+            <h2 class="page-title">Data Validation &amp; Quality Checks</h2>
+          </div>
+          <span class="page-num-badge">P. 4 / 8</span>
+        </div>
+
+        <div class="content-block rose">
+          <div class="block-title">VALIDATION VS VERIFICATION (TRAP #1)</div>
+          <div class="key-def">
+            • <strong>Data Validation:</strong> Automated computer algorithms that check data follows strict system rules before database acceptance.<br>
+            • <strong>Data Verification:</strong> Checking that copied/entered data accurately matches the original source (e.g. double entry, proofreading, email verification links).
+          </div>
+        </div>
+
+        <div class="content-block emerald">
+          <div class="block-title">THE 4 PRIMARY VALIDATION CHECKS (MUST MEMORIZE!)</div>
+          <div class="key-def" style="font-size:0.85rem; line-height:1.6;">
+            <strong>1. Type Check:</strong><br>
+            Ensures entered data conforms to the expected data type.<br>
+            <em>Exam Example:</em> An <span class="code-chip">Age</span> field accepts integer <span class="code-chip">21</span> but immediately rejects text string <span class="code-chip">"twenty-one"</span>.<br><br>
+
+            <strong>2. Range Check:</strong><br>
+            Verifies a number or date falls between legal minimum and maximum boundaries.<br>
+            <em>Exam Example:</em> Exam mark percentage must be between <span class="code-chip">0.0</span> and <span class="code-chip">100.0</span>; rejects <span class="code-chip">105</span> or <span class="code-chip">-5</span>.<br><br>
+
+            <strong>3. Presence Check:</strong><br>
+            Ensures mandatory fields cannot be left blank or submitted as NULL.<br>
+            <em>Exam Example:</em> The <span class="code-chip">StudentID</span> and <span class="code-chip">Surname</span> fields must be filled before the form can be submitted.<br><br>
+
+            <strong>4. Format Check:</strong><br>
+            Validates that input adheres strictly to a predefined pattern or regular expression.<br>
+            <em>Exam Example:</em> UP student email must end with <span class="code-chip">@tuks.co.za</span>; SA National ID must contain exactly 13 numeric digits.
+          </div>
+        </div>
+
+        <div class="content-block amber">
+          <div class="block-title">ADDITIONAL INTEGRITY CHECKS</div>
+          <div class="key-def" style="font-size:0.8rem;">
+            • <strong>Length Check:</strong> Characters within limits (e.g. password $\ge 8$ chars).<br>
+            • <strong>Check Digit:</strong> Mathematical calculation on final digit (e.g. ISBN, credit cards).<br>
+            • <strong>Lookup Check:</strong> Value exists in reference table (e.g. valid SA province codes).
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 5: THEME 6.1 SEARCH ENGINE MECHANICS -->
+      <article class="booklet-page" id="page-5" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 5 • THEME 6.1</span>
+            <h2 class="page-title">Search Engine Technology &amp; Indexing</h2>
+          </div>
+          <span class="page-num-badge">P. 5 / 8</span>
+        </div>
+
+        <div class="content-block">
+          <div class="block-title">THE 3-STAGE SEARCH ENGINE LIFECYCLE</div>
+          <div class="key-def" style="font-size:0.85rem; line-height:1.6;">
+            <strong>1. Crawling:</strong> Automated bots / web crawlers (e.g. <span class="buzzword">Googlebot</span>, spiders) discover new and updated pages by systematically traversing hyperlinks across the web. Governed by <span class="code-chip">robots.txt</span> and XML sitemaps.<br><br>
+            <strong>2. Indexing:</strong> Downloaded HTML pages are parsed, stripped of boilerplate, tokenized, and normalized (stop-word removal, stemming). Content is stored in an <span class="buzzword">Inverted Index</span>.<br><br>
+            <strong>3. Ranking &amp; Retrieval:</strong> When a user enters a query, the search engine parses keywords against the inverted index, scores matching pages using algorithms (PageRank, relevance, backlinks, speed, mobile usability), and returns the ranked SERP.
+          </div>
+        </div>
+
+        <div class="content-block indigo">
+          <div class="block-title">THE INVERTED INDEX (CORE EXAM CONCEPT)</div>
+          <div class="key-def">
+            <strong>Definition:</strong> The foundational database architecture used by search engines that maps <span class="buzzword">individual words/terms directly to the list of document IDs</span> containing them.<br>
+            <em>Why it matters:</em> Sequential full-text scanning across billions of web pages is computationally impossible. An inverted index enables instant $O(1)$ / logarithmic query retrieval.
+          </div>
+          <div style="background:var(--bg-card); padding:8px 12px; border-radius:6px; font-family:var(--font-mono); font-size:0.75rem; margin-top:6px; border:1px solid var(--border);">
+            "database" $\rightarrow$ [Doc 1: pos 4], [Doc 3: pos 12], [Doc 7: pos 2]<br>
+            "metadata" $\rightarrow$ [Doc 1: pos 8], [Doc 2: pos 1], [Doc 4: pos 5]
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 6: THEME 6.2 ON-PAGE & TECHNICAL SEO -->
+      <article class="booklet-page" id="page-6" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 6 • THEME 6.2</span>
+            <h2 class="page-title">On-Page &amp; Technical SEO Rubric</h2>
+          </div>
+          <span class="page-num-badge">P. 6 / 8</span>
+        </div>
+
+        <div class="content-block emerald">
+          <div class="block-title">ON-PAGE SEO MASTER CHECKLIST</div>
+          <div class="key-def" style="font-size:0.83rem; line-height:1.55;">
+            • <strong>&lt;title&gt; Tag:</strong> Under <span class="buzzword">60 characters</span>. Primary keyword placed first. Unique per page.<br>
+            • <strong>Meta Description:</strong> Under <span class="buzzword">160 characters</span>. Compelling copy with CTA to maximize click-through rate (CTR).<br>
+            • <strong>Heading Hierarchy:</strong> Exactly <strong>ONE</strong> <span class="code-chip">&lt;h1&gt;</span> per page for primary topic, followed by semantic <span class="code-chip">&lt;h2&gt;</span> and <span class="code-chip">&lt;h3&gt;</span> subheadings.<br>
+            • <strong>Image Alt Text:</strong> Descriptive <span class="code-chip">alt="..."</span> text for screen-reader accessibility and image search indexing.<br>
+            • <strong>Clean URL Slugs:</strong> Human-readable URLs (e.g. <span class="code-chip">/seo-guide</span> instead of <span class="code-chip">/?p=498</span>).
+          </div>
+        </div>
+
+        <div class="content-block indigo">
+          <div class="block-title">TECHNICAL &amp; OFF-PAGE SEO CHECKLIST</div>
+          <div class="key-def" style="font-size:0.83rem; line-height:1.55;">
+            • <strong>Mobile-First Responsiveness:</strong> High-priority Google ranking factor. Viewport configuration, fast touch targets.<br>
+            • <strong>Page Load Speed:</strong> Asset compression, browser caching, fast Core Web Vitals (LCP, INP, CLS).<br>
+            • <strong>HTTPS Encryption:</strong> SSL certificate is mandatory; non-HTTPS sites are flagged insecure.<br>
+            • <strong>XML Sitemap &amp; robots.txt:</strong> XML sitemap submitted to search console; <span class="code-chip">robots.txt</span> guides crawler access.<br>
+            • <strong>Backlinks (Off-Page):</strong> Hyperlinks from external authoritative sites acting as digital "votes of confidence" (Domain Authority / PageRank).
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 7: THE 12-MARK MODEL ESSAY -->
+      <article class="booklet-page" id="page-7" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 7 • THE 12-MARK ESSAY</span>
+            <h2 class="page-title">Model Essay: Implement Website SEO</h2>
+          </div>
+          <span class="page-num-badge">P. 7 / 8</span>
+        </div>
+
+        <div style="font-size:0.84rem; color:var(--text-secondary); line-height:1.6;">
+          <div class="content-block">
+            <strong style="color:var(--teal-primary); font-family:var(--font-mono); font-size:0.75rem;">PARAGRAPH 1: DEFINITION &amp; INBOUND MARKETING (3 MARKS)</strong>
+            <p>Search Engine Optimisation (SEO) is the strategic methodology of techniques used to increase the quality and volume of organic (unpaid) traffic to a website by achieving high rankings on search engine results pages (SERPs). Its core purpose is facilitating inbound marketing—allowing prospective users actively searching for relevant information to discover the platform organically.</p>
+          </div>
+
+          <div class="content-block emerald">
+            <strong style="color:var(--emerald); font-family:var(--font-mono); font-size:0.75rem;">PARAGRAPH 2: ON-PAGE OPTIMIZATION (3 MARKS)</strong>
+            <p>On-page implementation directly optimizes content and HTML markup. High-intent keywords are identified and integrated naturally into original content. Each page features a unique <code>&lt;title&gt;</code> tag under 60 characters and a compelling meta description under 160 characters. A strict heading structure with a single <code>&lt;h1&gt;</code> and nested <code>&lt;h2&gt;</code>/<code>&lt;h3&gt;</code> elements is enforced, alongside descriptive <code>alt</code> text on all images and clean, human-readable URL slugs.</p>
+          </div>
+
+          <div class="content-block indigo">
+            <strong style="color:var(--indigo); font-family:var(--font-mono); font-size:0.75rem;">PARAGRAPH 3: TECHNICAL &amp; OFF-PAGE SEO (3 MARKS)</strong>
+            <p>Technical SEO guarantees search bots can efficiently crawl and index the site. This requires rapid page speeds (image compression, caching), responsive mobile-first design, HTTPS encryption, and clean XML sitemaps submitted with a configured <code>robots.txt</code>. Off-page SEO complements this by acquiring authoritative backlinks from reputable third-party domains, building domain authority.</p>
+          </div>
+
+          <div class="content-block rose">
+            <strong style="color:var(--rose); font-family:var(--font-mono); font-size:0.75rem;">PARAGRAPH 4: WHITE-HAT VS BLACK-HAT ETHICS (3 MARKS)</strong>
+            <p>Implementation must strictly follow White-Hat ethics, prioritizing human user experience and compliance with search engine guidelines. Manipulative Black-Hat practices—such as keyword stuffing, hidden white text on white backgrounds, or purchasing links—must be avoided, as algorithms automatically penalize or completely de-index violating websites.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 8: BACK COVER & EXAMINER PITFALL SHIELDS -->
+      <article class="booklet-page" id="page-8" style="display:none;">
+        <div class="page-header">
+          <div>
+            <span class="page-tag">PAGE 8 • BACK COVER</span>
+            <h2 class="page-title">Pitfall Shields &amp; Matching Keys</h2>
+          </div>
+          <span class="page-num-badge">P. 8 / 8</span>
+        </div>
+
+        <div class="content-block amber">
+          <div class="block-title">⚠️ THE 4 EXAMINER PITFALL SHIELDS</div>
+          <div class="key-def" style="font-size:0.8rem; line-height:1.5;">
+            • <strong>Shield 1:</strong> Validation $\neq$ Verification! Validation = automated system checks (Type, Range, Format); Verification = checking against original source / double-entry.<br>
+            • <strong>Shield 2:</strong> Database $\neq$ DBMS! MySQL is the DBMS software suite; database is the collection of data.<br>
+            • <strong>Shield 3:</strong> SEO $\neq$ SEM! SEO is strictly organic/unpaid; Google Ads PPC is SEM.<br>
+            • <strong>Shield 4:</strong> RDA $\neq$ Markup Language! XML is a markup language; RDA is a cataloguing content standard based on FRBR.
+          </div>
+        </div>
+
+        <div class="content-block emerald">
+          <div class="block-title">🎯 GUARANTEED MATCHING KEY (8 MARKS)</div>
+          <div class="key-def" style="font-size:0.8rem; line-height:1.5;">
+            • <strong>RDA:</strong> Content standard replacing AACR based on FRBR for digital assets.<br>
+            • <strong>XML:</strong> Markup language with custom hierarchical tags &amp; strict tree syntax.<br>
+            • <strong>OWL:</strong> Semantic Web ontology language enabling machine reasoning.<br>
+            • <strong>Inverted Index:</strong> Database mapping words directly to document URLs.<br>
+            • <strong>Foreign Key:</strong> Attribute linking to Primary Key of another table.<br>
+            • <strong>ACID:</strong> Transaction properties ensuring RDBMS database integrity.
+          </div>
+        </div>
+
+        <div class="content-block rose">
+          <div class="block-title">🏁 FINAL CHECKLIST BEFORE ENTERING HALL</div>
+          <div class="key-def" style="font-size:0.82rem;">
+            ✓ Arrive at Informatorium Labs by 09:30 AM (Doors close 09:40)<br>
+            ✓ Write in structured, numbered paragraphs for essay questions<br>
+            ✓ 30 Marks clears Theory Subminimum; everything above is bonus!
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ==================== SHEET VIEW (4x2 FRENCH FOLD GRID) ==================== -->
+    <div id="sheetView">
+      <div style="margin-bottom:12px; font-size:0.85rem; color:var(--text-muted); display:flex; justify-content:space-between; align-items:center;">
+        <span><strong>Flat Print Sheet Layout:</strong> Fold horizontally on the dashed line, then fold vertically.</span>
+        <button class="btn btn-accent" onclick="window.print()">🖨️ Print This Sheet (A4)</button>
+      </div>
+
+      <div class="sheet-grid">
+        <div class="fold-line-vert"></div>
+        <div class="fold-line-horiz"></div>
+
+        <!-- Panel 1 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 1] COVER &amp; RADAR</strong><br>
+          <strong>INL 220 50% Lockdown</strong><br>
+          Target: 30 / 60 M.<br>
+          <strong>Formulas:</strong><br>
+          • TRPF: Type, Range, Presence, Format.<br>
+          • DSA: Descriptive, Structural, Admin.<br>
+          • CIR: Crawl, Index, Rank.<br>
+          • ACID: Atomicity, Consistency, Isolation, Durability.
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 2] THEME 4 METADATA</strong><br>
+          <strong>Metadata:</strong> Data about data facilitating discovery/management.<br>
+          <strong>3 Types:</strong> Descriptive (Title/Author), Structural (Chapters), Admin (Tech, Rights, Preservation).<br>
+          <strong>RDA vs AACR:</strong> RDA = web content standard on FRBR model; AACR = paper card catalogs.<br>
+          <strong>XML:</strong> Custom tags.<br>
+          <strong>OWL:</strong> Ontologies for reasoning.<br>
+          <strong>DCMI:</strong> 15 elements.
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 3] THEME 5 DATABASES</strong><br>
+          <strong>DB vs DBMS:</strong> DB is data; DBMS is software (MySQL, Oracle).<br>
+          <strong>Keys:</strong> PK = Unique record ID; FK = links to parent PK.<br>
+          <strong>ACID:</strong> Atomicity (all/none), Consistency (rules), Isolation (independent), Durability (permanent).<br>
+          <strong>RDBMS vs NoSQL:</strong> Relational = tables, SQL, ACID, banking. NoSQL = JSON docs, flexible, horizontal scale, social feeds.
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 4] DATA VALIDATION</strong><br>
+          <strong>Validation != Verification:</strong> Validation = automated system checks; Verification = checking against source.<br>
+          <strong>4 Validation Checks:</strong><br>
+          1. <em>Type:</em> Age = 21 (rejects "twenty").<br>
+          2. <em>Range:</em> Marks 0 to 100.<br>
+          3. <em>Presence:</em> StudentID != NULL.<br>
+          4. <em>Format:</em> ...@up.ac.za / 13-digit ID.
+        </div>
+
+        <!-- Panel 5 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 5] SEARCH ENGINES</strong><br>
+          <strong>3 Phases:</strong><br>
+          1. <em>Crawl:</em> Googlebot traverses hyperlinks.<br>
+          2. <em>Index:</em> Parsed into Inverted Index.<br>
+          3. <em>Rank:</em> Algorithmic SERP scoring.<br>
+          <strong>Inverted Index:</strong> Database mapping words to document URLs for split-second $O(1)$ query retrieval.
+        </div>
+
+        <!-- Panel 6 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 6] SEO RUBRIC</strong><br>
+          <strong>On-Page:</strong><br>
+          • Title &lt; 60 chars (keyword first).<br>
+          • Meta Description &lt; 160 chars.<br>
+          • Single H1 hierarchy.<br>
+          • Image Alt text.<br>
+          • Clean URL slugs.<br>
+          <strong>Tech/Off-Page:</strong><br>
+          Mobile-first, HTTPS SSL, fast speed, XML sitemap, robots.txt, authoritative backlinks.
+        </div>
+
+        <!-- Panel 7 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 7] 12-M MODEL ESSAY</strong><br>
+          <strong>P1:</strong> SEO definition &amp; shift to inbound marketing.<br>
+          <strong>P2:</strong> On-Page: Title &lt;60, Meta &lt;160, H1, Alt text, clean URLs.<br>
+          <strong>P3:</strong> Technical: Mobile speed, HTTPS, XML sitemaps, authoritative backlinks.<br>
+          <strong>P4:</strong> White-Hat user satisfaction vs Black-Hat keyword stuffing penalties.
+        </div>
+
+        <!-- Panel 8 -->
+        <div class="sheet-panel">
+          <strong style="color:var(--teal-primary);">[PAGE 8] SHIELDS &amp; MATCHING</strong><br>
+          <strong>4 Pitfall Shields:</strong><br>
+          • Validation != Verification<br>
+          • Database != DBMS<br>
+          • SEO != SEM (PPC)<br>
+          • RDA != Markup Language<br>
+          <strong>Matching Key:</strong> RDA (FRBR standard), XML (markup), OWL (ontology), Inverted Index (term database), FK (PK link).
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FIXED BOTTOM CRAM DOCK -->
+  <aside class="cram-dock">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button class="btn" style="border-radius:50%; width:36px; height:36px; padding:0; justify-content:center;" onclick="turnPage(-1)">◀</button>
+      <button class="btn" style="border-radius:50%; width:36px; height:36px; padding:0; justify-content:center;" onclick="turnPage(1)">▶</button>
+      <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:800; color:var(--teal-primary);" id="dockPageLabel">P. 1 / 8</span>
+    </div>
+    <div style="display:flex; gap:6px;">
+      <button class="btn" onclick="playVoicePrompt()">🎙️ Listen</button>
+      <button class="btn" onclick="location.href='index.html'">⚡ Back to Hub</button>
+    </div>
+  </aside>
+
+  <script>
+    let activePage = 1;
+    const totalPages = 8;
+
+    function gotoPage(p) {
+      if (p < 1 || p > totalPages) return;
+      activePage = p;
+      document.querySelectorAll('.booklet-page').forEach((el, idx) => {
+        el.style.display = (idx + 1 === activePage) ? 'flex' : 'none';
+      });
+      document.getElementById('curPageNum').textContent = activePage;
+      document.getElementById('dockPageLabel').textContent = `P. ${activePage} / 8`;
+
+      document.querySelectorAll('.page-pill-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === activePage);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function turnPage(delta) {
+      let next = activePage + delta;
+      if (next > totalPages) next = 1;
+      if (next < 1) next = totalPages;
+      gotoPage(next);
+    }
+
+    // Keyboard Arrow navigation
+    window.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') turnPage(1);
+      if (e.key === 'ArrowLeft') turnPage(-1);
+    });
+
+    // Touch Swipe for Mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) turnPage(1);
+      if (touchEndX - touchStartX > 50) turnPage(-1);
+    }, { passive: true });
+
+    // View Switcher (Booklet vs Sheet)
+    function switchView(mode) {
+      document.getElementById('tabBooklet').classList.toggle('active', mode === 'booklet');
+      document.getElementById('tabSheet').classList.toggle('active', mode === 'sheet');
+      document.getElementById('bookletView').style.display = (mode === 'booklet') ? 'block' : 'none';
+      document.getElementById('sheetView').style.display = (mode === 'sheet') ? 'block' : 'none';
+    }
+
+    // Search filter
+    function filterKeywords() {
+      const q = document.getElementById('termSearch').value.toLowerCase().trim();
+      if (!q) {
+        document.querySelectorAll('.content-block, .sheet-panel').forEach(el => el.style.opacity = '1');
+        return;
+      }
+      // If found in booklet pages, jump to that page
+      let foundPage = null;
+      for (let p = 1; p <= totalPages; p++) {
+        const text = document.getElementById(`page-${p}`).innerText.toLowerCase();
+        if (text.includes(q)) {
+          foundPage = p;
+          break;
+        }
+      }
+      if (foundPage) gotoPage(foundPage);
+    }
+
+    // Dark Mode Toggle
+    function toggleDark() {
+      const cur = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+    }
+
+    // Audio prompt
+    function playVoicePrompt() {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const pageText = document.getElementById(`page-${activePage}`).innerText;
+      const u = new SpeechSynthesisUtterance(pageText);
+      u.rate = 1.2;
+      window.speechSynthesis.speak(u);
+    }
+  </script>
+</body>
+</html>
